@@ -1,0 +1,19 @@
+.projets {
+	margin-top: 80px;
+	padding: 8rem;
+	display: flex;
+}
+
+.liste-projets {
+	display: grid;
+	grid-template-columns: 1fr; // 1 colonne par défaut
+	gap: 3rem;
+
+	@media (min-width: 768px) {
+		grid-template-columns: 1fr 1fr; // 2 colonnes à partir de 768px
+	}
+
+	@media (min-width: 1024px) {
+		grid-template-columns: 1fr 1fr 1fr; // 3 colonnes à partir de 1024px
+	}
+}

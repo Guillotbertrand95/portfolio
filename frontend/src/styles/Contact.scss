@@ -1,0 +1,40 @@
+.contact-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	max-width: 600px;
+	margin: auto;
+	padding: 2rem;
+	background: #f9f9f9;
+	border-radius: 10px;
+	margin-bottom: 50px;
+}
+
+input,
+textarea {
+	width: 100%;
+	padding: 0.8rem;
+	margin-top: 0.5rem;
+	margin-bottom: 1rem;
+	border: 1px solid #ccc;
+	border-radius: 8px;
+}
+
+button {
+	padding: 0.8rem 2rem;
+	background-color: #007bff;
+	color: white;
+	border: none;
+	border-radius: 8px;
+	cursor: pointer;
+}
+
+.success {
+	color: green;
+	margin-top: 1rem;
+}
+
+.error {
+	color: red;
+	margin-top: 1rem;
+}
