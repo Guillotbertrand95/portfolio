@@ -1,40 +1,56 @@
-.contact-container {
+.contact-form-container {
 	display: flex;
-	flex-direction: column;
+
 	align-items: center;
-	max-width: 600px;
-	margin: auto;
-	padding: 2rem;
-	background: #f9f9f9;
-	border-radius: 10px;
-	margin-bottom: 50px;
+	max-height: 45vh;
+	margin: 20px;
 }
-
-input,
-textarea {
-	width: 100%;
-	padding: 0.8rem;
-	margin-top: 0.5rem;
-	margin-bottom: 1rem;
-	border: 1px solid #ccc;
+.contact-form {
+	margin-right: 200px;
+	background-color: black;
+	padding: 0.5rem;
 	border-radius: 8px;
-}
+	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+	width: auto;
+	max-width: 70%;
 
-button {
-	padding: 0.8rem 2rem;
-	background-color: #007bff;
-	color: white;
-	border: none;
-	border-radius: 8px;
-	cursor: pointer;
-}
+	.input-nom,
+	.input-email,
+	.input-message {
+		.MuiOutlinedInput-root {
+			background-color: white;
+			border-radius: 8px;
 
-.success {
-	color: green;
-	margin-top: 1rem;
-}
+			// Supprimer la bordure bleue au focus
+			&.Mui-focused fieldset {
+				border-color: transparent !important;
+				box-shadow: none;
+			}
 
-.error {
-	color: red;
-	margin-top: 1rem;
+			// Bordure neutre par défaut
+			fieldset {
+				border-color: transparent;
+			}
+		}
+	}
+
+	// Style du label (avant clic)
+	.MuiInputLabel-root {
+		color: white;
+		transform: translate(14px, 14px) scale(1); // Pour le garder dans le champ
+	}
+
+	// Style du label en focus (quand il remonte)
+	.MuiInputLabel-root.Mui-focused {
+		color: white;
+	}
+
+	.input-button {
+		background-color: rgb(224, 233, 233);
+		color: black;
+
+		&:hover {
+			background-color: beige;
+		}
+	}
 }

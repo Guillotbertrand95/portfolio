@@ -42,12 +42,14 @@ export default function Navbar() {
 
 	return (
 		<>
-			<button
-				className="navbar-button"
-				onClick={() => setMenuOpen(!menuOpen)}
-			>
-				Menu
-			</button>
+			{!menuOpen && (
+				<button
+					className="navbar-button"
+					onClick={() => setMenuOpen(true)}
+				>
+					Menu
+				</button>
+			)}
 
 			{menuOpen && (
 				<nav ref={menuRef} className="navbar-menu">

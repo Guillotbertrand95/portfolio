@@ -1,59 +1,98 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
+import "../styles/Contact.scss";
+import {
+	TextField,
+	Button,
+	Box,
+	Typography,
+	Snackbar,
+	CircularProgress,
+} from "@mui/material";
 import emailjs from "@emailjs/browser";
-import "../styles/Contact.scss"; // si tu as du style
 
-const Contact = () => {
-	const formRef = useRef();
-	const [messageSent, setMessageSent] = useState(false);
-	const [error, setError] = useState(null);
+const ContactForm = () => {
+	const [feedback, setFeedback] = useState("");
+	const [loading, setLoading] = useState(false);
+	const [openSnackbar, setOpenSnackbar] = useState(false);
 
 	const sendEmail = (e) => {
 		e.preventDefault();
-
+		setLoading(true);
 		emailjs
 			.sendForm(
-				import.meta.env.VITE_EMAILJS_SERVICE_ID,
-				import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
-				formRef.current,
-				import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+				"service_ok71czq",
+				"template_1epkq9b",
+				e.target,
+				"DPouPY1uf7B1KYyX6"
 			)
 			.then(
-				(result) => {
-					console.log(result.text);
-					setMessageSent(true);
-					setError(null);
-					e.target.reset(); // reset form
+				() => {
+					setFeedback("✅ Message envoyé avec succès !");
+					setOpenSnackbar(true);
+					e.target.reset();
 				},
 				(error) => {
-					console.error(error.text);
-					setError("Une erreur est survenue lors de l’envoi.");
+					setFeedback("❌ Erreur lors de l'envoi : " + error.text);
+					setOpenSnackbar(true);
 				}
-			);
+			)
+			.finally(() => setLoading(false));
 	};
 
 	return (
-		<div className="contact-container">
-			<h2>Contactez-moi</h2>
-
-			<form ref={formRef} onSubmit={sendEmail}>
-				<label>Nom :</label>
-				<input type="text" name="user_name" required />
-
-				<label>Email :</label>
-				<input type="email" name="user_email" required />
-
-				<label>Message :</label>
-				<textarea name="message" required></textarea>
-
-				<button type="submit">Envoyer</button>
-			</form>
-
-			{messageSent && (
-				<p className="success">✅ Message envoyé avec succès !</p>
-			)}
-			{error && <p className="error">❌ {error}</p>}
+		<div className="contact-form-container">
+			<Box component="form" onSubmit={sendEmail} className="contact-form">
+				<Typography variant="h5" mb={2} textAlign="center">
+					Formulaire de contact
+				</Typography>
+				<TextField
+					className="input-nom"
+					placeholder="Nom"
+					name="user_name"
+					required
+					fullWidth
+					margin="normal"
+				/>
+				<TextField
+					className="input-email"
+					placeholder="Email"
+					type="email"
+					name="user_email"
+					required
+					fullWidth
+					margin="normal"
+				/>
+				<TextField
+					className="input-message"
+					placeholder="Message"
+					name="message"
+					required
+					multiline
+					rows={4}
+					fullWidth
+					margin="normal"
+				/>
+				<Button
+					className="input-button"
+					type="submit"
+					variant="contained"
+					color="primary"
+					fullWidth
+					sx={{ mt: 2 }}
+					disabled={loading}
+				>
+					{loading ? <CircularProgress size={24} /> : "Envoyer"}
+				</Button>
+				<Snackbar
+					open={openSnackbar}
+					autoHideDuration={6000}
+					onClose={() => setOpenSnackbar(false)}
+					message={feedback}
+					anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+				/>
+			</Box>
 		</div>
 	);
 };
 
-export default Contact;
+export default ContactForm;
