@@ -1,10 +1,10 @@
-.card-Accueil {
-	width: 400px;
+.card-Veille {
+	width: 300px;
 	margin-top: 10px;
-
+	background: #fff;
 	padding: 1rem;
 	border-radius: 1rem;
-
+	box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 	transition: box-shadow 0.3s ease;
 
 	opacity: 0; /* au départ invisible */
@@ -18,20 +18,11 @@
 h3 {
 	font-size: 1.25rem;
 	margin-bottom: 0.5rem;
-	color: black;
 }
-.description {
-	white-space: pre-line; // ✅ Affiche les sauts de ligne depuis la string JS
-	line-height: 1.6; // Meilleure lisibilité
-	margin-top: 1rem;
-	color: #333;
-}
+
 p {
 	color: #666;
 	margin-bottom: 1rem;
-	.intro-text {
-		white-space: pre-line;
-	}
 }
 
 a {

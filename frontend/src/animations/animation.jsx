@@ -15,7 +15,7 @@ export const staggerOnScroll = (targets) => {
 			ease: "power3.out",
 			scrollTrigger: {
 				trigger: targets[0],
-				start: "top 80%",
+				start: "top 90%",
 				toggleActions: "play reverse play reverse",
 				invalidateOnRefresh: true,
 			},

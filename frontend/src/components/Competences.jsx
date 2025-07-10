@@ -3,6 +3,7 @@ import CardCompetences from "./CardCompetences.jsx";
 import { staggerOnScroll } from "../animations/animation"; // le helper avec GSAP + ScrollTrigger
 import "../styles/Competences.scss";
 
+import CardSkill from "./CardSkill.jsx";
 const Competences = () => {
 	const sectionRef = useRef(null);
 
@@ -31,11 +32,7 @@ const Competences = () => {
 					description="Site perso React"
 					lien="#"
 				/>
-				<CardCompetences
-					titre="Portfolio"
-					description="Site perso React"
-					lien="#"
-				/>
+				<CardSkill></CardSkill>
 			</div>
 		</section>
 	);

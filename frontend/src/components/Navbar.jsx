@@ -65,6 +65,9 @@ export default function Navbar() {
 					>
 						Compétences
 					</a>
+					<a href="#veilles" ref={(el) => (linksRef.current[4] = el)}>
+						Veilles
+					</a>
 					<a href="#contact" ref={(el) => (linksRef.current[3] = el)}>
 						Contact
 					</a>

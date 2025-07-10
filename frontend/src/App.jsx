@@ -4,6 +4,7 @@ import BackgroundMouse from "./animations/BackgroundMouse";
 import Accueil from "./components/Accueil";
 import Projets from "./components/Projets";
 import Competences from "./components/Competences";
+import Veilles from "./components/Veilles";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 
@@ -28,6 +29,9 @@ function App() {
 						</section>
 						<section id="competences">
 							<Competences />
+						</section>
+						<section id="veilles">
+							<Veilles />
 						</section>
 						<section id="contact">
 							<Contact />

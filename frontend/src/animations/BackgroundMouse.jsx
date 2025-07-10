@@ -20,7 +20,7 @@ export default function BackgroundMouse({ children }) {
 		<div
 			className="background-mouse"
 			style={{
-				background: `radial-gradient(circle at ${position.x}% ${position.y}%,#FFFCFF,#BCD3F2 )`,
+				background: `radial-gradient(circle at ${position.x}% ${position.y}%,#C2EFEB,#ECFEE8 )`,
 			}}
 		>
 			{children}

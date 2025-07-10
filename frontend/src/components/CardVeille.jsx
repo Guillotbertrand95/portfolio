@@ -1,19 +1,15 @@
 import React from "react";
 
-export default function CardCompetences({
-	titre,
-	description,
-	lien,
-	children,
-}) {
+const CardProjet = ({ titre, description, lien }) => {
 	return (
-		<div className="card-competence">
+		<div className="card-Projet">
 			<h3>{titre}</h3>
 			<p>{description}</p>
 			<a href={lien} target="_blank" rel="noopener noreferrer">
-				En savoir plus
+				Voir le projet
 			</a>
-			{children}
 		</div>
 	);
-}
+};
+
+export default CardProjet;

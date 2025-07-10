@@ -1,11 +1,11 @@
+// Skill.jsx
 import { useEffect } from "react";
 import Lottie from "lottie-react";
-import htmlAnimation from "../lotties/html-logo.json";
 
-export default function Skill({ title }) {
+export default function Skill({ title, animation }) {
 	return (
 		<div className="skill-card">
-			<Lottie animationData={htmlAnimation} loop={true} />
+			<Lottie animationData={animation} loop={true} />
 			<h4>{title}</h4>
 		</div>
 	);
