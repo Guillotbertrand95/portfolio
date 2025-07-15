@@ -14,7 +14,7 @@ const Competences = () => {
 	}, []);
 
 	return (
-		<section id="competences" className="competences" ref={sectionRef}>
+		<section id="Competences" className="competences" ref={sectionRef}>
 			<h2>Mes Compétences</h2>
 			<div className="liste-competences">
 				<CardCompetences

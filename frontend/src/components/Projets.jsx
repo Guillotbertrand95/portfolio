@@ -17,7 +17,7 @@ const Projets = () => {
 	}, []);
 
 	return (
-		<section id="projets" className="projets" ref={sectionRef}>
+		<section id="Projets" className="projets" ref={sectionRef}>
 			<h2>Mes Projets</h2>
 			<div className="liste-projets">
 				<CardProjet

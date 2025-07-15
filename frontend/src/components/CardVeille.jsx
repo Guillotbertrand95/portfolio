@@ -1,8 +1,9 @@
 import React from "react";
+import "../styles/CardVeille.scss"; // ← si tu l’as séparé
 
-const CardProjet = ({ titre, description, lien }) => {
+const CardVeille = ({ titre, description, lien }) => {
 	return (
-		<div className="card-Projet">
+		<div className="cardVeille">
 			<h3>{titre}</h3>
 			<p>{description}</p>
 			<a href={lien} target="_blank" rel="noopener noreferrer">
@@ -12,4 +13,4 @@ const CardProjet = ({ titre, description, lien }) => {
 	);
 };
 
-export default CardProjet;
+export default CardVeille;
