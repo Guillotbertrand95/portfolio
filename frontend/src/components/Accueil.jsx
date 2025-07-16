@@ -3,6 +3,7 @@ import CardAccueil from "./CardAccueil";
 import Modal from "./Modal";
 import { staggerOnScroll } from "../animations/animation";
 import "../styles/Accueil.scss";
+import "../styles/Modal.scss";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import profilPhoto from "../assets/photo8.webp";
 
@@ -20,31 +21,28 @@ const Accueil = () => {
 		ScrollTrigger.refresh();
 	}, []);
 
-	const introText = `
-    Après 15 ans dans la restauration, j’ai choisi de me reconvertir dans le développement web, avec une passion pour la technique.
+	const introText = `Après 15 ans dans la restauration, j’ai choisi de me reconvertir dans le développement web, avec une passion pour la technique.
 
-    Je me spécialise en back-end et DevOps, avec un fort intérêt pour l’IA et la cybersécurité.
+Je me spécialise en back-end et DevOps, avec un fort intérêt pour l’IA et la cybersécurité.
 
-    Actuellement en formation, je développe des projets concrets comme un portfolio API, un assistant SEO, ou une API d’analyse émotionnelle pour les RH.
+Actuellement en formation, je développe des projets concrets comme un portfolio API, un assistant SEO, ou une API d’analyse émotionnelle pour les RH.
 
-    🎯 Mon objectif : créer des solutions utiles, robustes et sécurisées, en mettant la tech au service de l’humain.
-  `;
+🎯 Mon objectif : créer des solutions utiles, robustes et sécurisées, en mettant la tech au service de l’humain.`;
 
 	const aspirationsText = `Contribuer à des projets utiles et humains. Allier DevOps, IA et cybersécurité pour améliorer le quotidien. Toujours apprendre, expérimenter, automatiser, et transmettre.`;
 
 	return (
 		<section id="Accueil" className="accueil" ref={sectionRef}>
 			<h2>Accueil</h2>
-
+			<div className="photo-profil">
+				<img src={profilPhoto} alt="Photo de profil" />
+			</div>
 			<div className="accueil-content">
-				<div className="photo-profil">
-					<img src={profilPhoto} alt="Photo de profil" />
-				</div>
 				<div className="liste-accueil">
-					{/* Carte classique */}
+					{/* Carte de présentation */}
 					<CardAccueil titre="Présentation" description={introText} />
 
-					{/* Ici, juste le logo (pas de carte) */}
+					{/* Logo seul pour ouvrir la modale */}
 					<div
 						className="logo-simple"
 						onClick={() => setModalOpen(true)}
@@ -60,13 +58,10 @@ const Accueil = () => {
 				</div>
 			</div>
 
-			{/* Modale avec le contenu détaillé */}
 			{modalOpen && (
 				<Modal onClose={() => setModalOpen(false)}>
-					<CardAccueil
-						titre="Mes aspirations futures"
-						description={aspirationsText}
-					/>
+					<h3>Mes aspirations futures</h3>
+					<p>{aspirationsText}</p>
 				</Modal>
 			)}
 		</section>

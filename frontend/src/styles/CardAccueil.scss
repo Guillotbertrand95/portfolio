@@ -1,15 +1,8 @@
 .card-Accueil {
-	width: 400px;
-	margin-top: 10px;
+	width: 50%;
+	margin-bottom: 10px;
 	padding: 1rem;
 	border-radius: 1rem;
-	transition: box-shadow 0.3s ease, max-height 0.3s ease, opacity 0.3s ease;
-	opacity: 0;
-	transform: translateY(50px);
-
-	&:hover {
-		box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-	}
 
 	&.expandable {
 		cursor: pointer;

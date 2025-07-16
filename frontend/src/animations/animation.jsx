@@ -6,9 +6,9 @@ gsap.registerPlugin(ScrollTrigger);
 export const staggerOnScroll = (targets) => {
 	gsap.fromTo(
 		targets,
-		{ y: 50, opacity: 0 }, // état initial (invisible, décalé)
+		{ x: 100, opacity: 0 }, // 👉 départ à droite et invisible
 		{
-			y: 0,
+			x: 0, // ⬅️ arrive à sa position normale
 			opacity: 1,
 			duration: 1,
 			stagger: 0.2,

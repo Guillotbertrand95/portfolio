@@ -1,8 +1,9 @@
 .projets {
 	width: 100%;
 	color: #fff;
-	margin-top: 10rem;
+	margin-top: 1rem;
 	h2 {
+		margin-bottom: 4rem;
 		font-family: "Clash Display", sans-serif;
 		color: #000;
 		text-align: center;
@@ -12,7 +13,7 @@
 	.liste-projets {
 		display: grid;
 		grid-template-columns: 1fr;
-		gap: 3rem;
+		gap: 5rem;
 
 		@media (min-width: 768px) {
 			grid-template-columns: 1fr 1fr;

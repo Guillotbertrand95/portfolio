@@ -1,85 +1,63 @@
+h2 {
+	margin-top: 50px;
+	font-family: "Clash Display", sans-serif;
+	color: #022b3a;
+	text-align: center;
+	font-size: 2rem;
+}
+
+.photo-profil {
+	width: 10rem;
+	height: 10rem;
+	border-radius: 50%;
+	overflow: hidden; // important pour rendre l’image ronde
+	box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+	margin: 0rem 2rem 2rem 0;
+	background-color: #ccc; // gris en fond par défaut
+}
+
+.photo-profil img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover; // couvre entièrement la zone
+	display: block;
+}
+
 .accueil {
 	padding: 2rem;
 	color: #fff;
-	margin-top: 8rem;
-
-	h2 {
-		font-family: "Clash Display", sans-serif;
-		color: #022b3a;
-		text-align: center;
-		font-size: 2rem;
-	}
+	margin-bottom: 100px;
 
 	.accueil-content {
 		display: flex;
-		align-items: flex-start; /* alignement vertical en haut */
-		gap: 2rem; /* espace entre photo et cartes */
-		.photo-profil {
-			width: 150px;
-			height: 150px;
-			border-radius: 50%;
-			overflow: hidden;
-			margin-top: -70px;
-			transition: box-shadow 0.3s ease;
+		flex-direction: row;
+	}
+
+	.liste-accueil {
+		display: flex;
+		flex-direction: row;
+		justify-content: flex-start;
+		gap: 100px;
+
+		.logo-simple {
+			width: 200px;
+			height: 200px;
+			cursor: pointer;
 
 			img {
-				width: 100%;
+				width: 100%; // l’image prend toute la largeur du conteneur
 				height: 100%;
-				object-fit: cover;
+				object-fit: contain; // ou "cover" selon l’effet voulu
 				display: block;
 			}
-
-			&:hover {
-				box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); // ombre ajoutée seulement au hover
-			}
 		}
 
-		.liste-accueil {
-			flex: 1; /* prend le reste de la place */
-			display: grid;
-			grid-template-columns: 1fr;
-			gap: 5rem;
+		@media (min-width: 768px) {
+			grid-template-columns: repeat(2, 1fr);
+		}
 
-			@media (min-width: 768px) {
-				grid-template-columns: 1fr 1fr;
-			}
-
-			@media (min-width: 1024px) {
-				grid-template-columns: 1fr 1fr 1fr;
-			}
+		@media (min-width: 1024px) {
+			grid-template-columns: repeat(3, 1fr);
 		}
 	}
-}
-.modal-overlay {
-	position: fixed;
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	background: rgba(0, 0, 0, 0.6);
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	z-index: 1000;
-}
-
-.modal-content {
-	background: white;
-	padding: 2rem;
-	border-radius: 1rem;
-	max-width: 500px;
-	width: 90%;
-	position: relative;
-	box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-}
-
-.modal-close {
-	position: absolute;
-	top: 1rem;
-	right: 1rem;
-	background: none;
-	border: none;
-	font-size: 1.5rem;
-	cursor: pointer;
-	color: #333;
 }
