@@ -5,6 +5,7 @@
 	justify-content: center;
 	align-items: flex-start;
 	flex-wrap: wrap;
+	font-family: "Clash Display", sans-serif;
 }
 
 .contact-image {
@@ -27,9 +28,9 @@
 .contact-form {
 	background-color: #022b3a;
 	padding: 2rem;
-	border-radius: 4rem;
+	border-radius: 5px;
 	box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-
+	font-family: "Clash Display", sans-serif;
 	/* Inputs et textarea en fond blanc avec bordure arrondie */
 	input,
 	textarea {
@@ -45,41 +46,94 @@
 	}
 	.contact-title {
 		color: rgba(230, 225, 197, 0.8);
+		font-family: "Clash Display", sans-serif;
 	}
 
-	/* Bouton stylé */
-	.input-button {
-		color: white;
-		font-weight: 600;
-		border: none;
+	button {
+		padding: 0.9em 1.8em;
+		text-transform: uppercase;
+		text-decoration: none;
+		letter-spacing: 4px;
+		color: transparent;
+
+		border: 3px solid #50a2a7;
+		font-size: 14px;
+		position: relative;
+		font-family: inherit;
+		background: transparent;
 		cursor: pointer;
-		transition: background-color 0.3s ease;
 	}
-}
 
-.contact-form-columns {
-	display: flex;
-	gap: 1rem;
+	button::before {
+		content: "Envoyer";
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-color: #363636;
+		color: #fcd581;
 
-	.left-column {
-		flex: 1;
 		display: flex;
-		flex-direction: column;
-		gap: 1rem;
-	}
-
-	.right-column {
-		flex: 2;
-	}
-}
-
-@media (max-width: 768px) {
-	.contact-section {
-		flex-direction: column;
+		justify-content: center;
 		align-items: center;
+		transition: all 0.5s;
+	}
+
+	button:hover::before {
+		left: 100%;
+		transform: scale(0) rotateY(360deg);
+		opacity: 0;
+	}
+
+	button::after {
+		content: "Merci";
+		position: absolute;
+		top: 0;
+		left: -100%;
+		width: 100%;
+		height: 100%;
+		background-color: #363636;
+		color: #fcd581;
+
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		transition: all 0.5s;
+		transform: scale(0) rotateY(0deg);
+		opacity: 0;
+	}
+
+	button:hover::after {
+		left: 0;
+		transform: scale(1) rotateY(360deg);
+		opacity: 1;
 	}
 
 	.contact-form-columns {
-		flex-direction: column;
+		display: flex;
+		gap: 1rem;
+
+		.left-column {
+			flex: 1;
+			display: flex;
+			flex-direction: column;
+			gap: 1rem;
+		}
+
+		.right-column {
+			flex: 2;
+		}
+	}
+
+	@media (max-width: 768px) {
+		.contact-section {
+			flex-direction: column;
+			align-items: center;
+		}
+
+		.contact-form-columns {
+			flex-direction: column;
+		}
 	}
 }

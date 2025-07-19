@@ -10,8 +10,8 @@ export const staggerOnScroll = (targets) => {
 		{
 			x: 0, // ⬅️ arrive à sa position normale
 			opacity: 1,
-			duration: 1,
-			stagger: 0.2,
+			duration: 1.6,
+			stagger: 0.3,
 			ease: "power3.out",
 			scrollTrigger: {
 				trigger: targets[0],
