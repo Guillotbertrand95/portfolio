@@ -1,34 +1,98 @@
-// src/styles/_navbar.scss
-
-.navbar-button {
-	position: fixed;
-	top: 1rem;
-	right: 1rem;
-	z-index: 1000;
-	font-weight: 900;
-	background: #50a2a7;
-
-	padding: 0.5rem 1rem;
-	border-radius: 5px;
-	font-family: "Clash Display", sans-serif;
-	// ✅ Supprime la bordure et le contour
-	border: none;
-	outline: none;
-	color: white;
-	cursor: pointer;
-	transition: background-color 0.3s ease;
+// Bouton menu stylé (btn-12 adapté)
+.navbar-button,
+.navbar-button *,
+.navbar-button :after,
+.navbar-button :before,
+.navbar-button:after,
+.navbar-button:before {
+	border: 0 solid;
+	box-sizing: border-box;
 }
 
+.navbar-button {
+	top: 1rem;
+	left: 42em;
+	z-index: 1000;
+
+	-webkit-tap-highlight-color: transparent;
+	-webkit-appearance: button;
+	appearance: button;
+	color: #fff;
+	cursor: pointer;
+
+	background-color: #50a2a7;
+	font-family: "Clash Display", sans-serif;
+	font-size: 1rem;
+	font-weight: 900;
+	line-height: 1.5;
+	margin: 0;
+
+	border-radius: 99rem;
+	border-width: 2px;
+	overflow: hidden;
+	padding: 0.8rem 3rem;
+	position: relative;
+
+	text-transform: uppercase;
+
+	transition: color 0.3s ease;
+}
+
+.navbar-button span {
+	mix-blend-mode: difference;
+}
+
+.navbar-button:after,
+.navbar-button:before {
+	background: linear-gradient(
+		90deg,
+		#fff 25%,
+		transparent 0,
+		transparent 50%,
+		#fff 0,
+		#fff 75%,
+		transparent 0
+	);
+	content: "";
+	inset: 0;
+	position: absolute;
+	transform: translateY(var(--progress, 100%));
+	transition: transform 0.2s ease;
+	pointer-events: none;
+}
+
+.navbar-button:after {
+	--progress: -100%;
+	background: linear-gradient(
+		90deg,
+		transparent 0,
+		transparent 25%,
+		#fff 0,
+		#fff 50%,
+		transparent 0,
+		transparent 75%,
+		#fff 0
+	);
+	z-index: -1;
+}
+
+.navbar-button:hover:after,
+.navbar-button:hover:before {
+	--progress: 0;
+}
+
+// Navbar menu stylé assorti au bouton
 .navbar-menu {
 	position: fixed;
 	top: 0;
 	right: 0;
 	height: 100vh;
-	width: 10rem; // environ 192px
+	width: 12rem; // un peu plus large pour le confort
 
-	color: black;
+	color: #fff;
 	border: none;
 	padding: 2rem 1.5rem;
+
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -36,10 +100,9 @@
 
 	a {
 		margin-top: 85px;
-		font-size: 20px;
-		color: black;
-		font-weight: 600;
-		text-decoration: none;
+		font-size: 1.2rem;
+		color: #fff;
+
 		transition: color 0.3s ease;
 		font-family: "Clash Display", sans-serif;
 	}

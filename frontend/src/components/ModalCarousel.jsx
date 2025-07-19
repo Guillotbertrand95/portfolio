@@ -44,7 +44,25 @@ const ModalCarousel = () => {
 				<button
 					onClick={prevSlide}
 					aria-label="Slide précédente"
-				></button>
+					className="button"
+				>
+					<div className="button-box">
+						{/* Exemple SVG ou forme pour le bouton précédent */}
+						<svg
+							className="button-elem"
+							viewBox="0 0 24 24"
+							aria-hidden="true"
+						>
+							<path
+								d="M9 6l6 6-6 6"
+								stroke="currentColor"
+								strokeWidth="2"
+								fill="none"
+							/>
+						</svg>
+					</div>
+				</button>
+
 				<div className="indicator">
 					{slides.map((_, i) => (
 						<span
@@ -63,8 +81,27 @@ const ModalCarousel = () => {
 						</span>
 					))}
 				</div>
-				<button onClick={nextSlide} aria-label="Slide suivante">
-					Suivant →
+
+				<button
+					onClick={nextSlide}
+					aria-label="Slide suivante"
+					className="button"
+				>
+					<div className="button-box">
+						{/* Exemple SVG ou forme pour le bouton suivant */}
+						<svg
+							className="button-elem"
+							viewBox="0 0 24 24"
+							aria-hidden="true"
+						>
+							<path
+								d="M15 18l-6-6 6-6"
+								stroke="currentColor"
+								strokeWidth="2"
+								fill="none"
+							/>
+						</svg>
+					</div>
 				</button>
 			</div>
 		</div>
