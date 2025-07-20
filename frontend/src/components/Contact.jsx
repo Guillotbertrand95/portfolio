@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
+import emailjs from "@emailjs/browser";
 import {
-	Box,
 	Typography,
 	TextField,
 	Button,
@@ -14,16 +14,34 @@ const ContactForm = () => {
 	const [loading, setLoading] = useState(false);
 	const [openSnackbar, setOpenSnackbar] = useState(false);
 	const [feedback, setFeedback] = useState("");
+	const form = useRef();
 
 	const sendEmail = (e) => {
 		e.preventDefault();
 		setLoading(true);
-		// simulation pour test
-		setTimeout(() => {
-			setLoading(false);
-			setOpenSnackbar(true);
-			setFeedback("Message envoyé avec succès !");
-		}, 1500);
+
+		emailjs
+			.sendForm(
+				import.meta.env.VITE_EMAILJS_SERVICE_ID,
+				import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+				form.current,
+				import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+			)
+			.then(
+				(result) => {
+					console.log("Résultat EmailJS :", result);
+					setFeedback("Message envoyé avec succès !");
+					form.current.reset(); // Vide le formulaire après envoi
+				},
+				(error) => {
+					console.error("Erreur EmailJS :", error);
+					setFeedback("Erreur lors de l'envoi du message.");
+				}
+			)
+			.finally(() => {
+				setLoading(false);
+				setOpenSnackbar(true);
+			});
 	};
 
 	return (
@@ -33,11 +51,7 @@ const ContactForm = () => {
 			</div>
 
 			<div className="contact-form-container">
-				<Box
-					component="form"
-					onSubmit={sendEmail}
-					className="contact-form"
-				>
+				<form onSubmit={sendEmail} ref={form} className="contact-form">
 					<Typography
 						className="contact-title"
 						variant="h5"
@@ -91,6 +105,7 @@ const ContactForm = () => {
 							/>
 						</div>
 					</div>
+
 					<Snackbar
 						open={openSnackbar}
 						autoHideDuration={6000}
@@ -101,7 +116,7 @@ const ContactForm = () => {
 							horizontal: "center",
 						}}
 					/>
-				</Box>
+				</form>
 			</div>
 		</div>
 	);
