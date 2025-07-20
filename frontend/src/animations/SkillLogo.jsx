@@ -1,0 +1,29 @@
+import React from "react";
+import { FaReact, FaJsSquare, FaNodeJs, FaPython } from "react-icons/fa";
+import { SiMongodb, SiDocker, SiGit } from "react-icons/si";
+import "../styles/SkillLogo.scss";
+
+const skills = [
+	{ Icon: FaReact, name: "React" },
+	{ Icon: FaJsSquare, name: "JavaScript" },
+	{ Icon: FaNodeJs, name: "Node.js" },
+	{ Icon: SiMongodb, name: "MongoDB" },
+	{ Icon: FaPython, name: "Python" },
+	{ Icon: SiDocker, name: "Docker" },
+	{ Icon: SiGit, name: "Git" },
+];
+
+const SkillLogo = () => {
+	return (
+		<div className="skill-logos">
+			{skills.map(({ Icon, name }) => (
+				<div key={name} className="skill-card">
+					<Icon className={`skill-icon ${name.toLowerCase()}`} />
+					<p className="skill-name">{name}</p>
+				</div>
+			))}
+		</div>
+	);
+};
+
+export default SkillLogo;

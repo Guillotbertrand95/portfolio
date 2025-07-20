@@ -1,14 +1,15 @@
 import React, { useEffect, useRef } from "react";
-import CardCompetences from "./CardCompetences.jsx";
-import { staggerOnScroll } from "../animations/animation"; // le helper avec GSAP + ScrollTrigger
+import SkillLogo from "../animations/SkillLogo.jsx"; // ton composant logo
+import { staggerOnScroll } from "../animations/animation"; // animation GSAP
 import "../styles/Competences.scss";
+import "../styles/SkillLogo.scss";
 
-import CardSkill from "./CardSkill.jsx";
 const Competences = () => {
 	const sectionRef = useRef(null);
 
 	useEffect(() => {
-		const targets = sectionRef.current.querySelectorAll(".card-competence");
+		if (!sectionRef.current) return;
+		const targets = sectionRef.current.querySelectorAll(".skill-logo");
 
 		staggerOnScroll(targets);
 	}, []);
@@ -17,22 +18,9 @@ const Competences = () => {
 		<section id="Competences" className="competences" ref={sectionRef}>
 			<h2>Mes Compétences</h2>
 			<div className="liste-competences">
-				<CardCompetences
-					titre="Portfolio"
-					description="Site perso React"
-					lien="#"
-				/>
-				<CardCompetences
-					titre="Portfolio"
-					description="Site perso React"
-					lien="#"
-				/>
-				<CardCompetences
-					titre="Portfolio"
-					description="Site perso React"
-					lien="#"
-				/>
-				<CardSkill></CardSkill>
+				<SkillLogo name="React" />
+
+				{/* ajoute ici tous les logos que tu veux */}
 			</div>
 		</section>
 	);

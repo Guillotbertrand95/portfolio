@@ -25,13 +25,13 @@
 	font-size: 1rem;
 	font-weight: 900;
 	line-height: 1.5;
-	margin: 0;
+	margin-left: 680px;
 
 	border-radius: 99rem;
 	border-width: 2px;
 	overflow: hidden;
 	padding: 0.8rem 3rem;
-	position: relative;
+	position: fixed;
 
 	text-transform: uppercase;
 
@@ -89,7 +89,7 @@
 	height: 100vh;
 	width: 12rem; // un peu plus large pour le confort
 
-	color: #fff;
+	color: #002626;
 	border: none;
 	padding: 2rem 1.5rem;
 
@@ -100,8 +100,8 @@
 
 	a {
 		margin-top: 85px;
-		font-size: 1.2rem;
-		color: #fff;
+		font-size: 1.3rem;
+		color: #002626;
 
 		transition: color 0.3s ease;
 		font-family: "Clash Display", sans-serif;
