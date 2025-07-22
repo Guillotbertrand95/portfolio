@@ -1,6 +1,12 @@
 import React from "react";
-import { FaReact, FaJsSquare, FaNodeJs, FaPython } from "react-icons/fa";
-import { SiMongodb, SiDocker, SiGit } from "react-icons/si";
+import {
+	FaReact,
+	FaJsSquare,
+	FaNodeJs,
+	FaPython,
+	FaServer,
+} from "react-icons/fa";
+import { SiMongodb, SiGit } from "react-icons/si";
 import "../styles/SkillLogo.scss";
 
 const skills = [
@@ -9,7 +15,7 @@ const skills = [
 	{ Icon: FaNodeJs, name: "Node.js" },
 	{ Icon: SiMongodb, name: "MongoDB" },
 	{ Icon: FaPython, name: "Python" },
-	{ Icon: SiDocker, name: "Docker" },
+	{ Icon: FaServer, name: "Express" },
 	{ Icon: SiGit, name: "Git" },
 ];
 

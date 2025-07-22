@@ -10,36 +10,42 @@
 }
 
 .navbar-button {
+	position: fixed;
 	top: 1rem;
-	left: 42em;
+	left: auto;
+	right: 2rem; /* place le bouton à droite (tu peux ajuster) */
+	margin-left: 0; /* on enlève ce margin-left qui décale */
 	z-index: 1000;
 
-	-webkit-tap-highlight-color: transparent;
-	-webkit-appearance: button;
-	appearance: button;
-	color: #fff;
-	cursor: pointer;
+	display: flex; /* flex pour centrer verticalement et horizontalement */
+	align-items: center;
+	justify-content: center;
 
-	background-color: #50a2a7;
+	padding: 0.8rem 3rem;
+
 	font-family: "Clash Display", sans-serif;
 	font-size: 1rem;
 	font-weight: 900;
 	line-height: 1.5;
-	margin-left: 680px;
-
+	color: #fff;
+	background-color: #50a2a7;
 	border-radius: 99rem;
-	border-width: 2px;
-	overflow: hidden;
-	padding: 0.8rem 3rem;
-	position: fixed;
-
+	border: 2px solid transparent;
+	cursor: pointer;
 	text-transform: uppercase;
-
 	transition: color 0.3s ease;
+
+	/* Pour positionner l’après et avant */
+	overflow: hidden;
+
+	/* pour désactiver mix-blend mode sur span, si ça pose souci */
 }
 
 .navbar-button span {
-	mix-blend-mode: difference;
+	mix-blend-mode: difference; /* si ça cause souci, temporairement à retirer */
+	display: inline-block;
+	text-align: center;
+	width: 100%;
 }
 
 .navbar-button:after,

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "../styles/ModalCarousel.scss";
+import tech4 from "../assets/tech4.webp";
 
 const slides = [
 	{
@@ -9,17 +10,29 @@ const slides = [
 	{
 		title: "Ma reconversion",
 		content:
-			"Après 15 ans dans la restauration, je me suis lancé dans le développement web, avec un focus sur le back-end, DevOps, et l'IA.",
+			"Après 15 ans derrière le bar à servir des cocktails, j’ai décidé de changer de verre et de me lancer dans le développement web. Aujourd’hui, je me spécialise dans le back-end, DevOps, et l’IA, avec la même rigueur et le même sens du service qu’à l’époque. Une reconversion motivée par la passion de la tech et l’envie constante d’apprendre.",
 	},
 	{
 		title: "Mes objectifs futurs",
 		content:
-			"Créer des solutions utiles, robustes et sécurisées, en mettant la tech au service de l'humain. Toujours apprendre et transmettre !",
+			"Concevoir des solutions performantes, scalables et sécurisées, en tirant parti des meilleures pratiques DevOps, de l’automatisation CI/CD, et des technologies cloud modernes. Mon objectif est d’optimiser l’intégration continue, améliorer la résilience des systèmes, et faciliter la collaboration entre équipes grâce à des outils robustes et évolutifs. Toujours à l’affût des innovations pour progresser et transmettre ces compétences.",
 	},
 ];
 
 const ModalCarousel = () => {
 	const [currentIndex, setCurrentIndex] = useState(0);
+
+	// Style dynamique : image pour la 1ère slide, couleur pour les autres
+	const styleBackground =
+		currentIndex === 0
+			? {
+					backgroundImage: `url(${tech4})`,
+					backgroundSize: "cover",
+					backgroundPosition: "center",
+			  }
+			: {
+					backgroundColor: "#50a2a7",
+			  };
 
 	const prevSlide = () => {
 		setCurrentIndex((oldIndex) =>
@@ -34,9 +47,12 @@ const ModalCarousel = () => {
 	};
 
 	return (
-		<div className="modal-carousel">
+		<div className="modal-carousel" style={styleBackground}>
+			<div className="modal-overlay"></div>
 			<div className="modal-content">
-				<h1>{slides[currentIndex].title}</h1>
+				<h1 className={currentIndex === 0 ? "title-first-slide" : ""}>
+					{slides[currentIndex].title}
+				</h1>
 				<p>{slides[currentIndex].content}</p>
 			</div>
 
@@ -47,7 +63,6 @@ const ModalCarousel = () => {
 					className="button"
 				>
 					<div className="button-box">
-						{/* Exemple SVG ou forme pour le bouton précédent */}
 						<svg
 							className="button-elem"
 							viewBox="0 0 24 24"
@@ -88,7 +103,6 @@ const ModalCarousel = () => {
 					className="button"
 				>
 					<div className="button-box">
-						{/* Exemple SVG ou forme pour le bouton suivant */}
 						<svg
 							className="button-elem"
 							viewBox="0 0 24 24"

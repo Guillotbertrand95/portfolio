@@ -1,161 +1,188 @@
 .modal-carousel {
-	top: 0;
-	left: 0;
-	width: 900px; /* largeur fixe, adapte selon ton design */
-	height: 450px; /* hauteur fixe */
-	max-width: 90vw; /* responsive : pas plus large que 90% de la largeur viewport */
-	max-height: 80vh; /* responsive : pas plus haute que 80% de la hauteur viewport */
-	background: #50a2a7;
+	position: relative;
+	margin-top: 160px;
+	width: 1000px;
+	height: 450px;
+	max-width: 90vw;
+	max-height: 80vh;
+	border-radius: 5px;
+	overflow: hidden;
 	display: flex;
 	flex-direction: column;
-	/* justify-content: center;  <- on retire pour que contenu prenne l’espace */
-	align-items: center;
-	padding: 2rem;
-	box-sizing: border-box;
-	font-family: "Clash Display", sans-serif;
-	margin-top: 100px;
-	margin-bottom: 100px;
-	border-radius: 5px;
+
+	background-image: url("../assets/tech4.webp");
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+
+	&::before {
+		content: "";
+		position: absolute;
+		inset: 0;
+
+		border-radius: 5px;
+		z-index: 0;
+	}
 
 	.modal-content {
-		max-width: 600px;
+		position: relative;
+		z-index: 1;
+		max-width: 900px;
 		text-align: center;
-		margin-bottom: 2rem;
-
-		flex: 1; /* prend tout l’espace vertical restant */
-		overflow-y: auto; /* scroll si contenu dépasse la hauteur */
+		margin: 0 auto; /* centrer horizontalement */
+		flex-grow: 1; /* prend tout l’espace restant */
+		overflow-y: auto;
+		padding: 1rem 0;
+		.title-first-slide {
+			font-size: 5.5rem;
+			color: #54f2f2;
+			font-weight: 900;
+			text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
+		}
 
 		h1 {
 			font-size: 3rem;
 			margin-bottom: 1rem;
 			font-weight: 700;
 			letter-spacing: 0.05em;
+			color: #54f2f2;
+			font-family: "Clash Display", sans-serif;
 		}
 
 		p {
 			font-size: 1.5rem;
 			line-height: 1.6;
+			color: #cfe8ef;
+			font-family: "Clash Display", sans-serif;
 		}
 	}
 
 	.modal-controls {
-		flex-shrink: 0; /* empêche de réduire cette partie */
+		position: relative;
+		z-index: 1;
 		display: flex;
+		justify-content: center; /* centre les boutons horizontalement */
 		align-items: center;
 		gap: 6.5rem;
+		padding: 1rem 0;
+		flex-shrink: 0; /* ne pas réduire la zone des boutons */
+	}
 
-		/* On enlève l’ancien style bouton pour utiliser ton bouton animé */
-		button {
-			all: unset; /* reset complet pour éviter conflits */
-			cursor: pointer;
-			position: relative;
-			width: 56px;
-			height: 56px;
-			overflow: hidden;
-			background-color: transparent;
+	/* Boutons et styles déjà définis dans ta config initiale */
+	/* ... */
+}
 
-			&:focus-visible {
-				outline: 2px solid #61dafb;
-				outline-offset: 2px;
-			}
+button {
+	all: unset;
+	cursor: pointer;
+	position: relative;
+	width: 56px;
+	height: 56px;
+	overflow: hidden;
+	background-color: transparent;
+
+	&:focus-visible {
+		outline: 2px solid #61dafb;
+		outline-offset: 2px;
+	}
+}
+
+.button {
+	display: block;
+	position: relative;
+	width: 56px;
+	height: 56px;
+	margin: 0;
+	overflow: hidden;
+	outline: none;
+	background-color: transparent;
+	cursor: pointer;
+	border: 0;
+}
+
+.button:before,
+.button:after {
+	content: "";
+	position: absolute;
+	border-radius: 50%;
+	inset: 7px;
+}
+
+.button:before {
+	border: 4px solid #f0eeef;
+	transition: opacity 0.4s cubic-bezier(0.77, 0, 0.175, 1) 80ms,
+		transform 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955) 80ms;
+}
+
+.button:after {
+	border: 4px solid #96daf0;
+	transform: scale(1.3);
+	transition: opacity 0.4s cubic-bezier(0.165, 0.84, 0.44, 1),
+		transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+	opacity: 0;
+}
+
+.button:hover:before,
+.button:focus:before {
+	opacity: 0;
+	transform: scale(0.7);
+	transition: opacity 0.4s cubic-bezier(0.165, 0.84, 0.44, 1),
+		transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.button:hover:after,
+.button:focus:after {
+	opacity: 1;
+	transform: scale(1);
+	transition: opacity 0.4s cubic-bezier(0.77, 0, 0.175, 1) 80ms,
+		transform 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955) 80ms;
+}
+
+.button-box {
+	display: flex;
+	position: absolute;
+	top: 0;
+	left: 0;
+	/* Forcer couleur SVG blanche */
+	color: white;
+}
+
+.button-elem {
+	display: block;
+	width: 20px;
+	height: 20px;
+	margin: 17px 18px 0 18px;
+	transform: rotate(180deg);
+	fill: currentColor; /* utilise la couleur blanche forcée plus haut */
+	stroke: currentColor;
+	stroke-width: 2;
+}
+
+.button:hover .button-box,
+.button:focus .button-box {
+	transition: 0.4s;
+	transform: translateX(-56px);
+}
+
+.indicator {
+	display: flex;
+	gap: 0.8rem;
+
+	span {
+		font-size: 2rem;
+		cursor: pointer;
+		user-select: none;
+		color: rgba(255, 255, 255, 0.5);
+		transition: color 0.3s ease;
+
+		&.active {
+			color: white;
 		}
 
-		/* Ici, tu peux copier ton CSS de .button, .button:before, .button:after etc. */
-		/* Pour rappel, voici l’essentiel à mettre dans ton fichier SCSS global ou ici: */
-		.button {
-			display: block;
-			position: relative;
-			width: 56px;
-			height: 56px;
-			margin: 0;
-			overflow: hidden;
+		&:hover,
+		&:focus {
+			color: #61dafb;
 			outline: none;
-			background-color: transparent;
-			cursor: pointer;
-			border: 0;
-		}
-
-		.button:before,
-		.button:after {
-			content: "";
-			position: absolute;
-			border-radius: 50%;
-			inset: 7px;
-		}
-
-		.button:before {
-			border: 4px solid #f0eeef;
-			transition: opacity 0.4s cubic-bezier(0.77, 0, 0.175, 1) 80ms,
-				transform 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955) 80ms;
-		}
-
-		.button:after {
-			border: 4px solid #96daf0;
-			transform: scale(1.3);
-			transition: opacity 0.4s cubic-bezier(0.165, 0.84, 0.44, 1),
-				transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-			opacity: 0;
-		}
-
-		.button:hover:before,
-		.button:focus:before {
-			opacity: 0;
-			transform: scale(0.7);
-			transition: opacity 0.4s cubic-bezier(0.165, 0.84, 0.44, 1),
-				transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-		}
-
-		.button:hover:after,
-		.button:focus:after {
-			opacity: 1;
-			transform: scale(1);
-			transition: opacity 0.4s cubic-bezier(0.77, 0, 0.175, 1) 80ms,
-				transform 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955) 80ms;
-		}
-
-		.button-box {
-			display: flex;
-			position: absolute;
-			top: 0;
-			left: 0;
-		}
-
-		.button-elem {
-			display: block;
-			width: 20px;
-			height: 20px;
-			margin: 17px 18px 0 18px;
-			transform: rotate(180deg);
-			fill: #f0eeef;
-		}
-
-		.button:hover .button-box,
-		.button:focus .button-box {
-			transition: 0.4s;
-			transform: translateX(-56px);
-		}
-
-		.indicator {
-			display: flex;
-			gap: 0.8rem;
-
-			span {
-				font-size: 2rem;
-				cursor: pointer;
-				user-select: none;
-				color: rgba(255, 255, 255, 0.5);
-				transition: color 0.3s ease;
-
-				&.active {
-					color: white;
-				}
-
-				&:hover,
-				&:focus {
-					color: #61dafb;
-					outline: none;
-				}
-			}
 		}
 	}
 }
