@@ -1,4 +1,5 @@
 # Ne pas suivre les fichiers/dossiers suivants
 node_modules/
-.env
+frontend/.env
+backend/.env
 dist/
