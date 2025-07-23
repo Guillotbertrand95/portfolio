@@ -1,6 +1,6 @@
-import React, { useEffect, useRef } from "react";
+import React, { useLayoutEffect, useRef } from "react";
 import CardProjet from "./CardProjet";
-import { staggerOnScroll } from "../animations/animation";
+import { animateStagger } from "../animations/animation.jsx"; // <-- changement ici
 import "../styles/Projets.scss";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -54,13 +54,23 @@ const projetsData = [
 const Projets = () => {
 	const sectionRef = useRef(null);
 
-	useEffect(() => {
+	useLayoutEffect(() => {
 		if (!sectionRef.current) return;
-		const targets = sectionRef.current.querySelectorAll(".card-Projet");
 
-		staggerOnScroll(targets);
+		const timeoutId = setTimeout(() => {
+			const targets = sectionRef.current.querySelectorAll(".card-Projet");
+			console.log("Targets trouvés :", targets.length, targets);
+			if (!targets.length) {
+				console.warn(
+					"⚠️ Aucun .card-Projet trouvé, animation annulée."
+				);
+				return;
+			}
+			animateStagger(targets, { withScroll: true }); // <-- changement ici
+			ScrollTrigger.refresh();
+		}, 100);
 
-		ScrollTrigger.refresh();
+		return () => clearTimeout(timeoutId);
 	}, []);
 
 	return (
@@ -74,7 +84,7 @@ const Projets = () => {
 							titre={titre}
 							image={image}
 							lien={lien}
-							description={description} // si ta CardProjet gère la description
+							description={description}
 						/>
 					)
 				)}
