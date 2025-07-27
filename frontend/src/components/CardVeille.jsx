@@ -15,7 +15,7 @@ const CardVeille = ({ titre, description, lien, backgroundIndex }) => {
 
 	return (
 		<div
-			className="card"
+			className="card card-veille"
 			style={{ backgroundImage: `url(${backgroundImage})` }}
 		>
 			<b></b>

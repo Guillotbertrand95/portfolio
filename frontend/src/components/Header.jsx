@@ -1,7 +1,4 @@
 import "../styles/Header.scss";
-import Lottie from "lottie-react";
-
-import gitAnimation from "../lotties/git.json";
 
 export default function Accueil() {
 	return (
@@ -12,11 +9,7 @@ export default function Accueil() {
 					href="https://github.com/Guillotbertrand95"
 					target="_blank"
 					rel="noopener noreferrer"
-				>
-					<div className="git-logo">
-						<Lottie animationData={gitAnimation} loop={true} />
-					</div>
-				</a>
+				></a>
 			</div>
 		</>
 	);

@@ -1,47 +1,64 @@
-import Navbar from "./components/Navbar";
+import { lazy, Suspense } from "react";
+
 import Header from "./components/Header";
 import BackgroundMouse from "./animations/BackgroundMouse";
 import Accueil from "./components/Accueil";
-import Projets from "./components/Projets";
 import Competences from "./components/Competences";
-import Veilles from "./components/Veilles";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 
 import "./styles/main.scss";
 
+// Lazy loaded components
+const Navbar = lazy(() => import("./components/Navbar"));
+const Projets = lazy(() => import("./components/Projets"));
+const Veilles = lazy(() => import("./components/Veilles"));
+
 function App() {
 	return (
 		<div>
-			<BackgroundMouse>
+			<Suspense fallback={<div>Chargement de la navigation...</div>}>
 				<Navbar />
+			</Suspense>
 
-				<div className="main-G">
-					<main className="p-8 space-y-20 scroll-smooth">
-						<section id="header">
-							<Header />
-						</section>
-						<section id="accueil">
-							<Accueil />
-						</section>
-						<section id="projets">
+			<div className="main-G">
+				<main className="p-8 space-y-20 scroll-smooth">
+					<section id="header">
+						<Header />
+					</section>
+					<section id="accueil">
+						<Accueil />
+					</section>
+
+					<section id="projets">
+						<Suspense
+							fallback={<div>Chargement des projets...</div>}
+						>
 							<Projets />
-						</section>
-						<section id="competences">
-							<Competences />
-						</section>
-						<section id="veilles">
+						</Suspense>
+					</section>
+
+					<section id="competences">
+						<Competences />
+					</section>
+
+					<section id="veilles">
+						<Suspense
+							fallback={<div>Chargement des veilles...</div>}
+						>
 							<Veilles />
-						</section>
-						<section id="contact">
-							<Contact />
-						</section>
-						<section>
-							<Footer />
-						</section>
-					</main>
-				</div>
-			</BackgroundMouse>
+						</Suspense>
+					</section>
+
+					<section id="contact">
+						<Contact />
+					</section>
+
+					<section>
+						<Footer />
+					</section>
+				</main>
+			</div>
 		</div>
 	);
 }

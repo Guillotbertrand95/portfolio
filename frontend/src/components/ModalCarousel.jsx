@@ -1,11 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../styles/ModalCarousel.scss";
-import tech4 from "../assets/tech4.webp";
+import tech4 from "../assets/tech4.webp"; // <-- import d'image ici
 
 const slides = [
 	{
 		title: "GUILLOT Bertrand",
 		content: "Développeur web full stack",
+		image: tech4, // utilise l'import
 	},
 	{
 		title: "Ma reconversion",
@@ -21,12 +22,20 @@ const slides = [
 
 const ModalCarousel = () => {
 	const [currentIndex, setCurrentIndex] = useState(0);
+	const [bgLoaded, setBgLoaded] = useState(false);
 
-	// Style dynamique : image pour la 1ère slide, couleur pour les autres
+	useEffect(() => {
+		if (currentIndex === 0 && !bgLoaded) {
+			const img = new Image();
+			img.src = slides[0].image;
+			img.onload = () => setBgLoaded(true);
+		}
+	}, [currentIndex, bgLoaded]);
+
 	const styleBackground =
-		currentIndex === 0
+		currentIndex === 0 && bgLoaded
 			? {
-					backgroundImage: `url(${tech4})`,
+					backgroundImage: `url(${slides[currentIndex].image})`,
 					backgroundSize: "cover",
 					backgroundPosition: "center",
 			  }

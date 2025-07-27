@@ -1,7 +1,23 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
+import viteCompression from "vite-plugin-compression";
+import { visualizer } from "rollup-plugin-visualizer";
 
-// https://vite.dev/config/
+const isAnalyze = process.env.ANALYZE === "true";
+
 export default defineConfig({
-  plugins: [react()],
-})
+	plugins: [
+		react(),
+		...(isAnalyze
+			? [
+					viteCompression(),
+					visualizer({
+						filename: "stats.html",
+						open: true,
+						gzipSize: true,
+						brotliSize: true,
+					}),
+			  ]
+			: []),
+	],
+});

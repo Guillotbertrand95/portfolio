@@ -7,7 +7,6 @@ import {
 	FaServer,
 } from "react-icons/fa";
 import { SiMongodb, SiGit } from "react-icons/si";
-import "../styles/SkillLogo.scss";
 
 const skills = [
 	{ Icon: FaReact, name: "React" },
@@ -19,17 +18,15 @@ const skills = [
 	{ Icon: SiGit, name: "Git" },
 ];
 
-const SkillLogo = () => {
-	return (
-		<div className="skill-logos">
-			{skills.map(({ Icon, name }) => (
-				<div key={name} className="skill-card">
-					<Icon className={`skill-icon ${name.toLowerCase()}`} />
-					<p className="skill-name">{name}</p>
-				</div>
-			))}
-		</div>
-	);
-};
+const SkillLogo = () => (
+	<div className="skill-logos">
+		{skills.map(({ Icon, name }) => (
+			<div key={name} className="skill-card">
+				<Icon className={`skill-icon ${name.toLowerCase()}`} />
+				<p className="skill-name">{name}</p>
+			</div>
+		))}
+	</div>
+);
 
 export default SkillLogo;

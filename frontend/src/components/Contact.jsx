@@ -1,18 +1,10 @@
 import React, { useState, useRef } from "react";
 import emailjs from "@emailjs/browser";
-import {
-	Typography,
-	TextField,
-	Button,
-	CircularProgress,
-	Snackbar,
-} from "@mui/material";
-import contactGif from "../assets/Mail.gif"; // remplace le chemin si besoin
-import "../styles/Contact.scss"; // important pour que le style soit appliqué
+import "../styles/Contact.scss";
 
 const ContactForm = () => {
 	const [loading, setLoading] = useState(false);
-	const [openSnackbar, setOpenSnackbar] = useState(false);
+	const [showMessage, setShowMessage] = useState(false);
 	const [feedback, setFeedback] = useState("");
 	const form = useRef();
 
@@ -29,93 +21,64 @@ const ContactForm = () => {
 			)
 			.then(
 				(result) => {
-					console.log("Résultat EmailJS :", result);
+					console.log("EmailJS:", result);
 					setFeedback("Message envoyé avec succès !");
-					form.current.reset(); // Vide le formulaire après envoi
+					form.current.reset();
 				},
 				(error) => {
-					console.error("Erreur EmailJS :", error);
+					console.error("Erreur EmailJS:", error);
 					setFeedback("Erreur lors de l'envoi du message.");
 				}
 			)
 			.finally(() => {
 				setLoading(false);
-				setOpenSnackbar(true);
+				setShowMessage(true);
+				setTimeout(() => setShowMessage(false), 6000);
 			});
 	};
 
 	return (
 		<div className="contact-section">
-			<div className="contact-image">
-				<img src={contactGif} alt="Animation contact" />
-			</div>
-
 			<div className="contact-form-container">
 				<form onSubmit={sendEmail} ref={form} className="contact-form">
-					<Typography
-						className="contact-title"
-						variant="h5"
-						mb={2}
-						textAlign="center"
-					>
-						Formulaire de contact
-					</Typography>
+					<h2 className="contact-title">Formulaire de contact</h2>
 
 					<div className="contact-form-columns">
 						<div className="left-column">
-							<TextField
-								placeholder="Nom"
+							<input
+								type="text"
 								name="user_name"
+								placeholder="Nom"
 								required
-								fullWidth
-								margin="normal"
 							/>
-							<TextField
-								placeholder="Email"
+							<input
 								type="email"
 								name="user_email"
+								placeholder="Email"
 								required
-								fullWidth
-								margin="normal"
 							/>
-							<Button
-								type="submit"
-								variant="contained"
-								color="primary"
-								fullWidth
-								disabled={loading}
-							>
+							<button type="submit" disabled={loading}>
 								{loading ? (
-									<CircularProgress size={24} />
+									<span className="loader" />
 								) : (
 									"Envoyer"
 								)}
-							</Button>
+							</button>
 						</div>
 
 						<div className="right-column">
-							<TextField
-								placeholder="Message"
+							<textarea
 								name="message"
+								placeholder="Message"
+								rows="8"
 								required
-								multiline
-								rows={8}
-								fullWidth
-								margin="normal"
-							/>
+							></textarea>
 						</div>
 					</div>
 
-					<Snackbar
-						open={openSnackbar}
-						autoHideDuration={6000}
-						onClose={() => setOpenSnackbar(false)}
-						message={feedback}
-						anchorOrigin={{
-							vertical: "bottom",
-							horizontal: "center",
-						}}
-					/>
+					{showMessage && (
+						<div className="notification">{feedback}</div>
+					)}
 				</form>
 			</div>
 		</div>

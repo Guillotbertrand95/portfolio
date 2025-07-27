@@ -1,8 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import CardVeille from "./CardVeille.jsx";
-import { animateStagger } from "../animations/animation"; // <-- exactement ce nom !
 import "../styles/Veilles.scss";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const Veilles = () => {
 	const sectionRef = useRef(null);
@@ -31,20 +29,29 @@ const Veilles = () => {
 	}, []);
 
 	useEffect(() => {
-		if (!sectionRef.current) return;
+		if (!sectionRef.current || feeds.length === 0) return;
 
-		if (feeds.length === 0) return; // pas de données => pas d'animation
-
-		const timeoutId = setTimeout(() => {
+		const timeoutId = setTimeout(async () => {
 			const targets = sectionRef.current.querySelectorAll(".card");
-			console.log("Éléments à animer:", targets);
+			console.log("🎯 Éléments à animer :", targets);
 
 			if (!targets.length) {
 				console.warn("⚠️ Aucun élément .card à animer !");
 				return;
 			}
 
-			animateStagger(targets, { withScroll: true });
+			// ✅ Lazy import correct
+			const module = await import("../animations/animation");
+			if (module.lazyAnimateStagger) {
+				await module.lazyAnimateStagger(targets, { withScroll: true });
+			} else {
+				console.warn(
+					"❌ lazyAnimateStagger non trouvé dans animation.js"
+				);
+			}
+
+			// ✅ ScrollTrigger refresh
+			const { ScrollTrigger } = await import("gsap/ScrollTrigger");
 			ScrollTrigger.refresh();
 		}, 100);
 

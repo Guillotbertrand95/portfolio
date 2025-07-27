@@ -3,20 +3,34 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-export const animateStagger = (targets, { withScroll = true } = {}) => {
+// src/animations/lazyAnimateStagger.js
+export const lazyAnimateStagger = async (
+	targets,
+	{ withScroll = true } = {}
+) => {
 	if (!targets || !targets.length) {
 		console.warn("⚠️ Aucun élément à animer !");
 		return;
 	}
 
-	// Avant d'animer, on kill les animations et ScrollTriggers existants sur ces éléments
+	// Import dynamique
+	const gsapModule = await import("gsap");
+	const ScrollTriggerModule = await import("gsap/ScrollTrigger");
+	const gsap = gsapModule.gsap || gsapModule.default || gsapModule;
+	const ScrollTrigger =
+		ScrollTriggerModule.ScrollTrigger ||
+		ScrollTriggerModule.default ||
+		ScrollTriggerModule;
+
+	gsap.registerPlugin(ScrollTrigger);
+
+	// Kill animations précédentes
 	targets.forEach((target) => {
 		gsap.killTweensOf(target);
 		const st = ScrollTrigger.getById(target.dataset.stId);
 		if (st) st.kill();
 	});
 
-	// Créer un ID unique pour le ScrollTrigger, ça évite les conflits
 	const scrollTriggerId = `stagger-${Date.now()}`;
 
 	const animProps = {
@@ -35,15 +49,11 @@ export const animateStagger = (targets, { withScroll = true } = {}) => {
 			toggleActions: "play reverse play reverse",
 			invalidateOnRefresh: true,
 		};
-		// Enregistre l'ID dans dataset pour pouvoir gérer le kill plus tard
+
 		targets.forEach((target) => {
 			target.dataset.stId = scrollTriggerId;
 		});
 	}
 
-	gsap.fromTo(
-		targets,
-		{ x: 100, opacity: 0 }, // départ à droite, invisible
-		animProps
-	);
+	gsap.fromTo(targets, { x: 100, opacity: 0 }, animProps);
 };
