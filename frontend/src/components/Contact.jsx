@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react";
 import emailjs from "@emailjs/browser";
 import "../styles/Contact.scss";
-
+import ContactLogos from "./ContactLogos"; // adapte le chemin si besoin
 const ContactForm = () => {
 	const [loading, setLoading] = useState(false);
 	const [showMessage, setShowMessage] = useState(false);
@@ -38,7 +38,8 @@ const ContactForm = () => {
 	};
 
 	return (
-		<div className="contact-section">
+		<section id="Contact" className="contact">
+			<h2> Contact </h2>
 			<div className="contact-form-container">
 				<form onSubmit={sendEmail} ref={form} className="contact-form">
 					<h2 className="contact-title">Formulaire de contact</h2>
@@ -80,8 +81,9 @@ const ContactForm = () => {
 						<div className="notification">{feedback}</div>
 					)}
 				</form>
+				<ContactLogos />
 			</div>
-		</div>
+		</section>
 	);
 };
 

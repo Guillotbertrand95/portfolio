@@ -1,5 +1,4 @@
 .footer {
-	color: white;
 	font-family: "Clash Display", sans-serif;
 	display: flex;
 	flex-direction: column;
@@ -20,8 +19,9 @@
 	}
 
 	.footer-bottom p {
+		margin-top: 20px;
 		font-size: 0.9rem;
 		opacity: 0.7;
-		color: white;
+		color: #ffec51;
 	}
 }

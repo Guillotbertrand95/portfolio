@@ -1,19 +1,28 @@
-.contact-section {
-	display: flex;
-	gap: 5rem;
-	padding: 6rem;
-	justify-content: center;
-	align-items: flex-start;
-	flex-wrap: wrap;
-	font-family: "Clash Display", sans-serif;
-}
+.contact {
+	width: 100%;
+	color: #fff;
+	margin-top: 5rem;
+	margin-bottom: 8rem;
 
+	h2 {
+		font-family: "Clash Display", sans-serif;
+		color: #000;
+		text-align: center;
+		font-size: 2rem;
+		margin-bottom: 2rem;
+	}
+}
 .contact-form-container {
-	flex: 7;
-	max-width: 700px;
+	width: 100%;
+	gap: 50px;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
 }
 
 .contact-form {
+	margin-right: 220px;
+	margin-top: 50px;
 	background-color: #022b3a;
 	padding: 2rem;
 	border-radius: 5px;
@@ -21,7 +30,7 @@
 	font-family: "Clash Display", sans-serif;
 
 	h2.contact-title {
-		color: rgba(230, 225, 197, 0.8);
+		color: #f2f8ff;
 		font-size: 1.8rem;
 		text-align: center;
 		margin-bottom: 1.5rem;
@@ -34,7 +43,7 @@
 		margin-bottom: 15px;
 		background-color: white;
 		color: black;
-		border-radius: 8px;
+		border-radius: 5px;
 		border: 1px solid #ccc;
 		outline: none;
 		font-size: 1rem;
@@ -45,13 +54,14 @@
 	}
 
 	button {
-		width: 100%;
+		width: 60%;
+		height: 50%;
 		padding: 0.9em 1.8em;
 		text-transform: uppercase;
 		letter-spacing: 4px;
 		color: transparent;
 		border: 3px solid #50a2a7;
-		font-size: 14px;
+		font-size: 15px;
 		position: relative;
 		font-family: inherit;
 		background: transparent;
@@ -67,7 +77,7 @@
 		width: 100%;
 		height: 100%;
 		background-color: #363636;
-		color: #fcd581;
+		color: #ffec51;
 		display: flex;
 		justify-content: center;
 		align-items: center;
@@ -88,7 +98,7 @@
 		width: 100%;
 		height: 100%;
 		background-color: #363636;
-		color: #fcd581;
+		color: #ffec51;
 		display: flex;
 		justify-content: center;
 		align-items: center;
@@ -169,18 +179,5 @@
 	100% {
 		opacity: 0;
 		transform: translateX(-50%) translateY(20px);
-	}
-}
-
-/* ✅ Corrigé : media query bien placée */
-@media (max-width: 768px) {
-	.contact-section {
-		flex-direction: column;
-		align-items: center;
-		padding: 2rem;
-	}
-
-	.contact-form-columns {
-		flex-direction: column;
 	}
 }

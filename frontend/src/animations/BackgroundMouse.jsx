@@ -5,7 +5,10 @@ export default function BackgroundStatic({ children }) {
 		<div
 			className="background-mouse"
 			style={{
-				background: "linear-gradient(200deg, #f5f7fa, #022b3a )", // choisis ton style ici
+				background:
+					"linear-gradient(220deg, #E2E2FF, #D7FFE9, #B8E3FF)",
+				minHeight: "100vh",
+				color: "#F2F8FF",
 			}}
 		>
 			{children}

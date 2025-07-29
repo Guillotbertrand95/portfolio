@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import "../styles/CardProjet.scss";
-
+import BoutonStylé from "../animations/BoutonTitre.jsx";
 const CardProjet = ({ titre, image, lien }) => {
 	const [isVisible, setIsVisible] = useState(false);
 	const ref = useRef(null);
@@ -23,22 +23,18 @@ const CardProjet = ({ titre, image, lien }) => {
 
 	return (
 		<div className="card-Projet" ref={ref}>
-			<h3 className="card-titre">{titre}</h3>
+			<div className="card-header">
+				<BoutonStylé href={lien}>{titre}</BoutonStylé>
+			</div>
+
 			<div
 				className="image-wrapper"
 				style={{
 					backgroundImage: isVisible ? `url(${image})` : "none",
-					minHeight: "200px", // à adapter pour éviter le saut de layout
+					minHeight: "200px",
 				}}
 			>
-				<div className="overlay">
-					<a
-						href={lien}
-						className="projet-button"
-						target="_blank"
-						rel="noopener noreferrer"
-					></a>
-				</div>
+				<div className="overlay" />
 			</div>
 		</div>
 	);

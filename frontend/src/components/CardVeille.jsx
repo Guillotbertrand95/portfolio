@@ -20,20 +20,18 @@ const CardVeille = ({ titre, description, lien, backgroundIndex }) => {
 		>
 			<b></b>
 			<div className="content">
-				<h3 className="title">{titre}</h3>
+				<div className="header-row">
+					<h3 className="title">{titre}</h3>
+					<a
+						href={lien}
+						target="_blank"
+						rel="noopener noreferrer"
+						aria-label={`Voir l'article ${titre}`}
+						className="button"
+					></a>
+				</div>
+
 				<p className="description">{description}</p>
-				<ul className="sci">
-					<li>
-						<a
-							href={lien}
-							target="_blank"
-							rel="noopener noreferrer"
-							aria-label={`Voir l'article ${titre}`}
-						>
-							<i className="fa-solid fa-arrow-up-right-from-square"></i>
-						</a>
-					</li>
-				</ul>
 			</div>
 		</div>
 	);

@@ -13,7 +13,7 @@
 	.liste-competences {
 		display: flex;
 		flex-direction: row;
-		gap: 2rem;
+		gap: 40px;
 
 		@media (min-width: 768px) {
 			grid-template-columns: 1fr 1fr;

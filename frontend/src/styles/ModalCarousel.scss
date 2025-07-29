@@ -1,14 +1,16 @@
 .modal-carousel {
 	position: relative;
 	margin-top: 160px;
-	width: 1000px;
-	height: 450px;
-	max-width: 90vw;
-	max-height: 80vh;
-	border-radius: 5px;
+	margin-right: 50px;
+	width: 75vw; // Presque toute la largeur visible (ajuste à 100vw si tu veux bord à bord)
+	max-width: none; // enlève toute limite
+	height: 65vh; // fixe la hauteur à 80% de la fenêtre
+	min-height: 65vh; // pour éviter que ça rapetisse
 	overflow: hidden;
 	display: flex;
 	flex-direction: column;
+
+	border-radius: 5px;
 
 	background-image: url("../assets/tech4.webp");
 	background-size: cover;
@@ -19,58 +21,58 @@
 		content: "";
 		position: absolute;
 		inset: 0;
-
 		border-radius: 5px;
 		z-index: 0;
 	}
-
-	.modal-content {
-		position: relative;
-		z-index: 1;
-		max-width: 900px;
-		text-align: center;
-		margin: 0 auto; /* centrer horizontalement */
-		flex-grow: 1; /* prend tout l’espace restant */
-		overflow-y: auto;
-		padding: 1rem 0;
-		.title-first-slide {
-			font-size: 5.5rem;
-			color: #54f2f2;
-			font-weight: 900;
-			text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
-		}
-
-		h1 {
-			font-size: 3rem;
-			margin-bottom: 1rem;
-			font-weight: 700;
-			letter-spacing: 0.05em;
-			color: #54f2f2;
-			font-family: "Clash Display", sans-serif;
-		}
-
-		p {
-			font-size: 1.5rem;
-			line-height: 1.6;
-			color: #cfe8ef;
-			font-family: "Clash Display", sans-serif;
-		}
-	}
-
-	.modal-controls {
-		position: relative;
-		z-index: 1;
-		display: flex;
-		justify-content: center; /* centre les boutons horizontalement */
-		align-items: center;
-		gap: 6.5rem;
-		padding: 1rem 0;
-		flex-shrink: 0; /* ne pas réduire la zone des boutons */
-	}
-
-	/* Boutons et styles déjà définis dans ta config initiale */
-	/* ... */
 }
+
+.modal-content {
+	position: relative;
+	z-index: 1;
+	max-width: 900px;
+	width: 100%;
+	text-align: center;
+	margin: 0 auto; /* centrer horizontalement */
+	flex-grow: 1; /* prend tout l’espace restant */
+	overflow-y: auto;
+	padding: 1rem 0;
+	.title-first-slide {
+		font-size: 5.5rem;
+		color: #f2f8ff;
+		font-weight: 900;
+		text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
+	}
+
+	h1 {
+		font-size: 3rem;
+		margin-bottom: 1rem;
+		font-weight: 700;
+		letter-spacing: 0.05em;
+		color: #f2f8ff;
+		font-family: "Clash Display", sans-serif;
+	}
+
+	p {
+		font-size: 1.5rem;
+		line-height: 1.6;
+		color: #f2f8ff;
+		font-family: "Clash Display", sans-serif;
+	}
+}
+
+.modal-controls {
+	position: relative;
+	z-index: 1;
+	display: flex;
+	justify-content: center; /* centre les boutons horizontalement */
+	align-items: center;
+	gap: 6.5rem;
+	padding: 1rem 0;
+	flex-shrink: 0; /* ne pas réduire la zone des boutons */
+}
+
+/* Boutons et styles déjà définis dans ta config initiale */
+/* ... */
 
 button {
 	all: unset;
