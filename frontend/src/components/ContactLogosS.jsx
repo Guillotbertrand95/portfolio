@@ -19,7 +19,7 @@ const logos = [
 	},
 ];
 
-export default function ContactLogos() {
+export default function ContactLogosS() {
 	return (
 		<div className="contact-logos">
 			{logos.map(({ href, label, iconClass }) => (

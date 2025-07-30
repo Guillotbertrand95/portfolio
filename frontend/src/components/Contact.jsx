@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react";
 import emailjs from "@emailjs/browser";
 import "../styles/Contact.scss";
-import ContactLogos from "./ContactLogosS.jsx"; // adapte le chemin si besoin
+import ContactLogosS from "./ContactLogosS.jsx"; // adapte le chemin si besoin
 const ContactForm = () => {
 	const [loading, setLoading] = useState(false);
 	const [showMessage, setShowMessage] = useState(false);
@@ -81,7 +81,7 @@ const ContactForm = () => {
 						<div className="notification">{feedback}</div>
 					)}
 				</form>
-				<ContactLogos />
+				<ContactLogosS />
 			</div>
 		</section>
 	);
