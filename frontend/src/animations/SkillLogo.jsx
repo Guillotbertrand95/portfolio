@@ -1,4 +1,4 @@
-import "../styles/SkillLogo.scss"; // Le style propre à SkillLogo
+import "../styles/SkillLogoS.scss"; // Le style propre à SkillLogo
 
 const skills = [
 	{ className: "devicon-javascript-plain colored", name: "JavaScript" },
