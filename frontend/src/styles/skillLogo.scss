@@ -1,19 +1,20 @@
 .skill-logos {
 	width: 100%;
-	display: grid;
-	grid-template-columns: repeat(3, 1fr);
-	gap: 70px 40px; // vertical & horizontal spacing
-	justify-items: center;
-
-	margin: 0 auto;
+	display: flex; // Flexbox pour ligne horizontale
+	justify-content: center; // Centrer horizontalement
+	gap: 50px; // Espace entre les logos (plus naturel que grid-gap ici)
 	padding: 2rem 0;
+	overflow-x: auto; // Si la fenêtre est trop petite, on scroll horizontal
+	scroll-padding: 1rem; // Petit padding au scroll pour confort
 }
 
 .skill-card {
-	width: 350px;
-	height: 180px;
+	flex: 0 0 auto; // Pas de rétrécissement, taille fixe selon contenu
+	width: 200px; // Plus compact, plus moderne
+	height: 200px;
 	display: flex;
 	flex-direction: column;
+	gap: 20px;
 	align-items: center;
 	justify-content: center;
 	background: transparent;
@@ -28,7 +29,7 @@
 }
 
 .skill-icon {
-	font-size: 140px;
+	font-size: 120px; // Légèrement plus petit pour harmoniser
 	color: #002626;
 	filter: drop-shadow(0 0 6px rgba(0, 255, 255, 0.6));
 	transition: transform 0.3s ease, filter 0.3s ease, color 0.3s ease;
@@ -38,7 +39,7 @@
 	font-family: "Chillax", sans-serif;
 	margin-top: 10px;
 	font-weight: 900;
-	font-size: 1.5rem;
+	font-size: 1.4rem;
 	color: #002626;
 	text-align: center;
 	user-select: none;

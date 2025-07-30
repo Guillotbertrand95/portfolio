@@ -1,7 +1,8 @@
+import "../styles/SkillLogo.scss"; // Le style propre à SkillLogo
+
 const skills = [
 	{ className: "devicon-javascript-plain colored", name: "JavaScript" },
 	{ className: "devicon-react-original colored", name: "React" },
-
 	{ className: "devicon-python-plain colored", name: "Python" },
 	{ className: "devicon-css3-plain colored", name: "CSS" },
 	{ className: "devicon-html5-plain colored", name: "HTML" },
