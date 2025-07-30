@@ -50,7 +50,7 @@ export default function Header() {
 	return (
 		<>
 			<header className="header-section" ref={headerRef}>
-				<h1 className="header-title">Bienvenue sur mon portfolio</h1>
+				<h1 className="header-title">Bienvenue sur mon Portfolio</h1>
 				<button
 					className="navbar-button"
 					onClick={() => setMenuOpen(!menuOpen)}
