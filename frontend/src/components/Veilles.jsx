@@ -7,7 +7,7 @@ const Veilles = () => {
 	const [feeds, setFeeds] = useState([]);
 
 	useEffect(() => {
-		fetch(`${process.env.REACT_APP_API_URL}/api/rss`)
+		fetch(`${import.meta.env.VITE_API_URL}/api/rss`)
 			.then((res) => res.json())
 			.then((data) => {
 				const limitedFeeds = data.map((flux) => flux.items[0]);
