@@ -1,5 +1,3 @@
-import "../styles/BackgroundMouse.scss";
-
 export default function BackgroundStatic({ children }) {
 	return (
 		<div

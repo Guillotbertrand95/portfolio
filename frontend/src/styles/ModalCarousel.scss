@@ -188,3 +188,43 @@ button {
 		}
 	}
 }
+@media screen and (max-width: 600px) {
+	.modal-carousel {
+		width: 98vw;
+		margin-left: 50px;
+		margin-top: 260px; /* augmente la marge haute pour baisser la modal */
+		margin-bottom: 100px;
+		min-height: 60vh;
+		padding: 1rem;
+		background-position: center center;
+	}
+}
+
+.modal-content {
+	margin-bottom: 50px;
+	height: 900px;
+}
+.modal-content .title-first-slide {
+	font-size: 4.5rem;
+}
+.modal-content p {
+	font-size: 1rem;
+}
+
+@media screen and (max-width: 600px) {
+	.modal-controls {
+		gap: 2rem;
+		padding: 0.5rem 0;
+	}
+
+	.button {
+		width: 40px;
+		height: 40px;
+	}
+
+	.button-elem {
+		width: 16px;
+		height: 16px;
+		margin: 12px 12px 0 12px;
+	}
+}

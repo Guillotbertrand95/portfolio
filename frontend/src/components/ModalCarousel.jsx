@@ -25,6 +25,10 @@ const ModalCarousel = () => {
 	const [bgLoaded, setBgLoaded] = useState(false);
 
 	useEffect(() => {
+		// Réinitialiser au premier slide à chaque montage
+		setCurrentIndex(0);
+	}, []);
+	useEffect(() => {
 		if (currentIndex === 0 && !bgLoaded) {
 			const img = new Image();
 			img.src = slides[0].image;

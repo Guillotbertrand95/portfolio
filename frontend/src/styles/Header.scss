@@ -91,7 +91,7 @@
 	position: fixed;
 	top: 4rem; /* juste sous le header (qui fait 4rem de haut) */
 	left: 0; /* aligné à gauche de l'écran */
-	right: 2rem;
+
 	width: 100%; /* plein largeur */
 	height: auto; /* hauteur auto */
 	background-color: rgba(130, 221, 240, 0.8);
@@ -151,5 +151,37 @@
 	.header-title {
 		font-family: "Clash Display", sans-serif;
 		color: #002626;
+	}
+}
+@media (max-width: 768px) {
+	.navbar-menu {
+		display: grid; /* active la grid */
+		grid-template-columns: repeat(3, 1fr); /* 3 colonnes égales */
+		grid-template-rows: repeat(2, auto); /* 2 lignes auto pour contenu */
+		gap: 1rem; /* espace entre les items */
+		padding: 1rem;
+		background-color: #002626;
+		margin-top: 17px;
+		a {
+			font-size: 1rem;
+			font-weight: 400;
+			color: #fff;
+			text-align: center; /* pour centrer les liens dans chaque case */
+			padding: 0.2rem 0; /* un peu de confort */
+			display: block;
+		}
+	}
+}
+
+@media (max-width: 768px) {
+	.header-section {
+		height: 85px;
+	}
+
+	.navbar-button {
+		width: 20px;
+		height: 20px;
+		font-size: 0.9rem;
+		margin-top: 40px;
 	}
 }

@@ -31,3 +31,8 @@
 		pointer-events: none;
 	}
 }
+@media screen and (max-width: 400px) {
+	.card-Projet {
+		width: 90%;
+	}
+}

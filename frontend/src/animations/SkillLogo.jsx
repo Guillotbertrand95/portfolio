@@ -1,4 +1,5 @@
-import "../styles/SkillLogoS.scss"; // Le style propre à SkillLogo
+import React from "react";
+import "../styles/SkillLogoS.scss";
 
 const skills = [
 	{ className: "devicon-javascript-plain colored", name: "JavaScript" },
@@ -13,7 +14,7 @@ const SkillLogo = () => (
 	<div className="skill-logos">
 		{skills.map(({ className, name }) => (
 			<div key={name} className="skill-card">
-				<i className={className + " skill-icon"}></i>
+				<i className={`${className} skill-icon`}></i>
 				<p className="skill-name">{name}</p>
 			</div>
 		))}
