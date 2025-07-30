@@ -1,5 +1,5 @@
 import React from "react";
-import "../styles/ContactLogos.scss";
+import "../styles/ContactLogosS.scss";
 
 const logos = [
 	{
