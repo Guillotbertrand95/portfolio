@@ -33,12 +33,20 @@ export const lazyAnimateStagger = async (
 
 	const scrollTriggerId = `stagger-${Date.now()}`;
 
+	// ✅ Détection mobile
+	const isMobile = window.matchMedia("(max-width: 767px)").matches;
+
 	const animProps = {
 		x: 0,
 		opacity: 1,
-		duration: 1.6,
-		stagger: 0.3,
-		ease: "power3.out",
+		scale: 1,
+		rotate: 0,
+		duration: 2,
+		ease: "expo.out",
+		stagger: {
+			amount: 1.2,
+			from: "start",
+		},
 	};
 
 	if (withScroll) {
@@ -46,8 +54,11 @@ export const lazyAnimateStagger = async (
 			id: scrollTriggerId,
 			trigger: targets[0],
 			start: "top 90%",
-			toggleActions: "play reverse play reverse",
+			toggleActions: isMobile
+				? "play none none none" // ✅ Mobile : une seule fois à l'apparition
+				: "play reverse play reverse", // 🖥️ Desktop : comme avant
 			invalidateOnRefresh: true,
+			once: isMobile, // ✅ Pour que sur mobile l’animation ne rejoue pas
 		};
 
 		targets.forEach((target) => {
@@ -55,5 +66,9 @@ export const lazyAnimateStagger = async (
 		});
 	}
 
-	gsap.fromTo(targets, { x: 100, opacity: 0 }, animProps);
+	gsap.fromTo(
+		targets,
+		{ x: 100, opacity: 0, scale: 0.95, rotate: 2 },
+		animProps
+	);
 };

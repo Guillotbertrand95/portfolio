@@ -58,6 +58,14 @@ const ContactForm = () => {
 								placeholder="Email"
 								required
 							/>
+							<div className="right-column">
+								<textarea
+									name="message"
+									placeholder="Message"
+									rows="8"
+									required
+								></textarea>
+							</div>
 							<button type="submit" disabled={loading}>
 								{loading ? (
 									<span className="loader" />
@@ -65,15 +73,6 @@ const ContactForm = () => {
 									"Envoyer"
 								)}
 							</button>
-						</div>
-
-						<div className="right-column">
-							<textarea
-								name="message"
-								placeholder="Message"
-								rows="8"
-								required
-							></textarea>
 						</div>
 					</div>
 

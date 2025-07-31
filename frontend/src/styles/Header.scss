@@ -161,7 +161,7 @@
 		gap: 1rem; /* espace entre les items */
 		padding: 1rem;
 		background-color: #002626;
-		margin-top: 17px;
+		margin-top: 19px;
 		a {
 			font-size: 1rem;
 			font-weight: 400;
@@ -178,10 +178,18 @@
 		height: 85px;
 	}
 
+	.header-title {
+		font-family: "Clash Display", sans-serif;
+		color: #002626;
+		font-size: 23px;
+		margin-bottom: 40px;
+	}
 	.navbar-button {
 		width: 20px;
 		height: 20px;
 		font-size: 0.9rem;
 		margin-top: 40px;
+		margin-left: 10px;
+		border-radius: 5px;
 	}
 }

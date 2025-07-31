@@ -37,23 +37,22 @@
 	overflow-y: auto;
 	padding: 1rem 0;
 	.title-first-slide {
-		font-size: 5.5rem;
+		font-size: 90px;
 		color: #f2f8ff;
 		font-weight: 900;
 		text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
 	}
 
 	h1 {
-		font-size: 3rem;
+		font-size: 40px;
 		margin-bottom: 1rem;
 		font-weight: 700;
 		letter-spacing: 0.05em;
 		color: #f2f8ff;
 		font-family: "Clash Display", sans-serif;
 	}
-
 	p {
-		font-size: 1.5rem;
+		font-size: 25px;
 		line-height: 1.6;
 		color: #f2f8ff;
 		font-family: "Clash Display", sans-serif;
@@ -192,23 +191,35 @@ button {
 	.modal-carousel {
 		width: 98vw;
 		margin-left: 50px;
-		margin-top: 260px; /* augmente la marge haute pour baisser la modal */
+		margin-top: 200px; /* augmente la marge haute pour baisser la modal */
 		margin-bottom: 100px;
 		min-height: 60vh;
 		padding: 1rem;
 		background-position: center center;
 	}
-}
+	.modal-content {
+		.title-first-slide {
+			font-size: 70px;
+			color: #f2f8ff;
+			font-weight: 900;
+			text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
+		}
 
-.modal-content {
-	margin-bottom: 50px;
-	height: 900px;
-}
-.modal-content .title-first-slide {
-	font-size: 4.5rem;
-}
-.modal-content p {
-	font-size: 1rem;
+		h1 {
+			font-size: 20px;
+			margin-bottom: 1rem;
+			font-weight: 700;
+			letter-spacing: 0.05em;
+			color: #f2f8ff;
+			font-family: "Clash Display", sans-serif;
+		}
+		p {
+			font-size: 18px;
+			line-height: 1.6;
+			color: #f2f8ff;
+			font-family: "Clash Display", sans-serif;
+		}
+	}
 }
 
 @media screen and (max-width: 600px) {
