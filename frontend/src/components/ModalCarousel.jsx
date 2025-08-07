@@ -105,7 +105,7 @@ const ModalCarousel = () => {
 									setCurrentIndex(i);
 							}}
 						>
-							●
+							•
 						</span>
 					))}
 				</div>

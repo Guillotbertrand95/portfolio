@@ -1,16 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import SkillLogo from "../animations/SkillLogo.jsx";
 import SkillCarousel from "../animations/SkillCarousel.jsx";
-import "../styles/Competences.scss";
-
+import useIsMobile from "../hooks/useIsMobile";
+import "../styles/Competence.scss";
 const Competences = () => {
-	const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
-
-	useEffect(() => {
-		const handleResize = () => setIsMobile(window.innerWidth <= 768);
-		window.addEventListener("resize", handleResize);
-		return () => window.removeEventListener("resize", handleResize);
-	}, []);
+	const isMobile = useIsMobile(768);
 
 	return (
 		<section id="Competences" className="competences">

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../styles/SkillLogoS.scss";
+import "../styles/SkillCarousel.scss";
 
 const skills = [
 	{ className: "devicon-javascript-plain colored", name: "JavaScript" },
@@ -10,35 +10,13 @@ const skills = [
 	{ className: "devicon-git-plain colored", name: "Git" },
 ];
 
-// Composant bouton flèche réutilisable
-const ArrowButton = ({ onClick, direction = "left", label }) => {
-	const rotate = direction === "right" ? "rotate(0deg)" : "rotate(180deg)";
-	return (
-		<button onClick={onClick} className="button" aria-label={label}>
-			<div className="button-box" style={{ transform: rotate }}>
-				<svg
-					className="button-elem"
-					xmlns="http://www.w3.org/2000/svg"
-					viewBox="0 0 24 24"
-					fill="none"
-					stroke="currentColor"
-					strokeWidth="2"
-					strokeLinecap="round"
-					strokeLinejoin="round"
-				>
-					<polyline points="9 18 15 12 9 6" />
-				</svg>
-			</div>
-		</button>
-	);
-};
-
 const SkillCarousel = () => {
 	const [current, setCurrent] = useState(0);
 
 	const prev = () => {
 		setCurrent((prev) => (prev === 0 ? skills.length - 1 : prev - 1));
 	};
+
 	const next = () => {
 		setCurrent((prev) => (prev === skills.length - 1 ? 0 : prev + 1));
 	};
@@ -46,34 +24,78 @@ const SkillCarousel = () => {
 	const nextIndex = (current + 1) % skills.length;
 
 	return (
-		<div className="skill-carousel">
-			<ArrowButton
+		<div
+			className="skill-carousel"
+			style={{ display: "flex", alignItems: "center", gap: "1rem" }}
+		>
+			{/* Bouton Précédent */}
+			<button
+				className="boutonC prev"
 				onClick={prev}
-				direction="left"
-				label="Compétence précédente"
-			/>
+				aria-label="Précédent"
+			>
+				<svg
+					xmlns="http://www.w3.org/2000/svg"
+					viewBox="0 0 24 24"
+					fill="none"
+					stroke="currentColor"
+					strokeWidth="2"
+					strokeLinecap="round"
+					strokeLinejoin="round"
+					width="24"
+					height="24"
+				>
+					<polyline points="9 18 15 12 9 6" />
+				</svg>
+			</button>
 
-			<div className="skill-slide-container">
-				<div className="skill-slide fade-in">
+			{/* Contenu du carousel */}
+			<div
+				className="skill-slide-container"
+				style={{ display: "flex", gap: "2rem" }}
+			>
+				<div
+					className="skill-slide fade-in"
+					style={{ textAlign: "center" }}
+				>
 					<i
 						className={`${skills[current].className} skill-icon`}
+						style={{ fontSize: "48px" }}
 					></i>
 					<p className="skill-name">{skills[current].name}</p>
 				</div>
-
-				<div className="skill-slide fade-in">
+				<div
+					className="skill-slide fade-in"
+					style={{ textAlign: "center" }}
+				>
 					<i
 						className={`${skills[nextIndex].className} skill-icon`}
+						style={{ fontSize: "48px" }}
 					></i>
 					<p className="skill-name">{skills[nextIndex].name}</p>
 				</div>
 			</div>
 
-			<ArrowButton
+			{/* Bouton Suivant */}
+			<button
+				className="boutonC next"
 				onClick={next}
-				direction="right"
-				label="Compétence suivante"
-			/>
+				aria-label="Suivant"
+			>
+				<svg
+					xmlns="http://www.w3.org/2000/svg"
+					viewBox="0 0 24 24"
+					fill="none"
+					stroke="currentColor"
+					strokeWidth="2"
+					strokeLinecap="round"
+					strokeLinejoin="round"
+					width="24"
+					height="24"
+				>
+					<polyline points="9 18 15 12 9 6" />
+				</svg>
+			</button>
 		</div>
 	);
 };

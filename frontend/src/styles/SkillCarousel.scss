@@ -1,102 +1,74 @@
 .skill-carousel {
 	display: flex;
-	flex-direction: row;
 	align-items: center;
 	justify-content: center;
-	position: relative;
-	width: 100%;
-	max-width: 700px;
-	margin: auto;
-	padding: 2rem 1rem;
-	gap: 1rem;
+	gap: 2rem;
+	padding: 1rem;
 }
 
 .skill-slide-container {
 	display: flex;
-	flex-direction: row;
-	overflow: hidden;
-	width: 100%;
-	justify-content: center;
-	gap: 2rem;
+	gap: 3rem;
 }
 
 .skill-slide {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	justify-content: center;
-	min-width: 120px;
-	height: 120px;
-	background-color: #1e1e1e;
-	border-radius: 10px;
-	padding: 1rem;
-	box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-	transition: transform 0.5s ease, opacity 0.5s ease;
-	color: #fff;
-
-	&.fade-in {
-		animation: fadeIn 0.4s ease-in-out;
-	}
-}
-
-.skill-icon {
-	font-size: 3rem;
-	margin-bottom: 0.5rem;
-}
-
-.skill-name {
-	font-size: 1rem;
-	font-weight: bold;
+	justify-content: flex-start;
+	width: 100px;
+	min-height: 100px; // fixée pour éviter les sauts
 	text-align: center;
 }
 
-/* Animation d’apparition */
-@keyframes fadeIn {
-	from {
-		opacity: 0;
-		transform: translateX(30px);
-	}
-	to {
-		opacity: 1;
-		transform: translateX(0);
-	}
+.skill-icon {
+	font-size: 100px;
 }
 
-/* Boutons flèches */
-.button {
+.skill-name {
+	margin-top: 0.5rem;
+	font-size: 1rem;
+	height: 1.5rem; // réserve un espace fixe pour le texte
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.boutonC {
 	all: unset;
-	cursor: pointer;
-	width: 48px;
-	height: 48px;
-	display: flex;
+	display: inline-flex;
 	align-items: center;
 	justify-content: center;
-	background-color: #444;
+
+	width: 26px;
+	height: 26px;
+
 	border-radius: 50%;
-	transition: background 0.3s;
-	color: #61dafb;
 
-	&:hover {
-		background-color: #666;
+	background-color: #022b3a;
+	color: #ffec51;
+	cursor: pointer;
+	user-select: none;
+
+	transition: background-color 0.3s ease, color 0.3s ease,
+		border-color 0.3s ease;
+
+	&:focus {
+		outline: 2px solid #ffec51;
+		outline-offset: 2px;
 	}
-
-	&:focus-visible {
-		outline: 2px solid #61dafb;
+	svg {
+		display: block;
+		stroke-width: 2;
+		stroke: currentColor;
+		transition: transform 0.3s ease;
 	}
 }
 
-.button-box {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	width: 100%;
-	height: 100%;
+.boutonC.prev svg {
+	transform: rotate(180deg);
 }
 
-.button-elem {
-	width: 24px;
-	height: 24px;
-	fill: none;
-	stroke: currentColor;
-	stroke-width: 2;
+.boutonC.next svg {
+	transform: rotate(0deg);
 }
