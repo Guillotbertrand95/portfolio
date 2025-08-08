@@ -7,7 +7,7 @@ const app = express();
 // Liste des origines autorisées (pour le frontend)
 const allowedOrigins = [
 	"http://localhost:5173", // pour développement local
-	"https://portfolio-eta-eight-62.vercel.app/", // remplace par ton vrai domaine Vercel
+	"https://portfolio-eta-eight-62.vercel.app", // remplace par ton vrai domaine Vercel
 ];
 
 // Middleware CORS sécurisé
