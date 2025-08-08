@@ -160,8 +160,10 @@
 		grid-template-rows: repeat(2, auto); /* 2 lignes auto pour contenu */
 		gap: 1rem; /* espace entre les items */
 		padding: 1rem;
-		background-color: rgba(130, 221, 240, 0.8);
-		margin-top: 20px;
+		background-color: rgba(2, 43, 58, 0.8); /* 80% opaque */
+
+		margin-top: 20.3px;
+		border: none;
 		a {
 			font-size: 1rem;
 			font-weight: 400;
@@ -179,20 +181,25 @@
 @media (max-width: 768px) {
 	.header-section {
 		height: 85px;
+		background-color: rgba(2, 43, 58, 0.8); /* 80% opaque */
+		border: none;
 	}
 
 	.header-title {
 		font-family: "Clash Display", sans-serif;
-		color: #002626;
+		color: #ffec51 !important;
 		font-size: 23px;
+		font-weight: 400;
 		margin-bottom: 40px;
 	}
 	.navbar-button {
 		width: 20px;
 		height: 20px;
 		font-size: 0.9rem;
+		font-weight: 400;
 		margin-top: 40px;
 		margin-left: 10px;
 		border-radius: 5px;
+		color: #ffec51;
 	}
 }
