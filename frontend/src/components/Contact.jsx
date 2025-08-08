@@ -26,6 +26,7 @@ const ContactForm = () => {
 					form.current.reset();
 				},
 				(error) => {
+					console.log("erreur");
 					console.error("Erreur EmailJS:", error);
 					setFeedback("Erreur lors de l'envoi du message.");
 				}

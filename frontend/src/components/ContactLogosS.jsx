@@ -13,7 +13,7 @@ const logos = [
 		iconClass: "devicon-linkedin-plain colored",
 	},
 	{
-		href: "https://acrobat.adobe.com/id/urn:aaid:sc:EU:b4f69d06-78de-4ae1-bcb4-1c5758b582f6",
+		href: "https://acrobat.adobe.com/id/urn:aaid:sc:EU:b01a0118-b2bf-4222-aac2-ea718f81fdf8",
 		label: "CV PDF",
 		iconClass: "fa-solid fa-file-pdf",
 	},
