@@ -37,7 +37,7 @@ const projetsData = [
 	{
 		titre: "Our-Solution",
 		image: ourSolution,
-		lien: "#",
+		lien: "https://github.com/Guillotbertrand95/startCLI",
 		description: "Mon site perso en React",
 	},
 	{
