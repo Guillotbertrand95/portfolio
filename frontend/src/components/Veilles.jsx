@@ -28,36 +28,6 @@ const Veilles = () => {
 			.catch((err) => console.error("Erreur fetch flux RSS :", err));
 	}, []);
 
-	useEffect(() => {
-		if (!sectionRef.current || feeds.length === 0) return;
-
-		const timeoutId = setTimeout(async () => {
-			const targets = sectionRef.current.querySelectorAll(".card");
-			console.log("🎯 Éléments à animer :", targets);
-
-			if (!targets.length) {
-				console.warn("⚠️ Aucun élément .card à animer !");
-				return;
-			}
-
-			// ✅ Lazy import correct
-			const module = await import("../animations/animation");
-			if (module.lazyAnimateStagger) {
-				await module.lazyAnimateStagger(targets, { withScroll: true });
-			} else {
-				console.warn(
-					"❌ lazyAnimateStagger non trouvé dans animation.js"
-				);
-			}
-
-			// ✅ ScrollTrigger refresh
-			const { ScrollTrigger } = await import("gsap/ScrollTrigger");
-			ScrollTrigger.refresh();
-		}, 100);
-
-		return () => clearTimeout(timeoutId);
-	}, [feeds]);
-
 	return (
 		<section id="Veilles" className="veilles" ref={sectionRef}>
 			<h2>Veille Technologique</h2>
