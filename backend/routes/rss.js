@@ -11,8 +11,10 @@ const cache = new NodeCache({ stdTTL: 7200 }); // 2h
 const flux = [
 	"https://www.zataz.com/feed/",
 	"https://feeds.feedburner.com/DeveloppezCom",
-	"https://www.journaldunet.com/_montage/rss.xml",
-	"https://www.cybersecurity-insiders.com/feed/",
+	"https://feeds.feedburner.com/TheHackersNews",
+	"https://devops.com/feed/",
+	"https://javascriptweekly.com/rss",
+
 	"https://hacks.mozilla.org/feed/",
 ];
 
