@@ -1,51 +1,59 @@
+// routes/rss.js
 import express from "express";
 import Parser from "rss-parser";
 import NodeCache from "node-cache";
 
 const router = express.Router();
 const parser = new Parser();
+const cache = new NodeCache({ stdTTL: 7200 }); // 2h
 
-const cache = new NodeCache({ stdTTL: 7200 }); // 2 heures en secondes
-
-// Cache mémoire : 2 heures (7200 secondes)
+// Tes flux RSS
 const flux = [
-	"https://openclassrooms.com/fr/blog/rss.xml",
 	"https://www.zataz.com/feed/",
 	"https://feeds.feedburner.com/DeveloppezCom",
-	"https://www.journaldunet.com/rss.xml",
+	"https://www.journaldunet.com/_montage/rss.xml",
 	"https://www.cybersecurity-insiders.com/feed/",
 	"https://hacks.mozilla.org/feed/",
 ];
 
 router.get("/", async (req, res) => {
 	try {
-		// Vérifie si les données sont déjà en cache
+		// 1️⃣ Vérifie le cache
 		const cachedData = cache.get("rssData");
 		if (cachedData) {
-			console.log("✅ Données RSS servies depuis le cache");
+			console.log("✅ Données RSS depuis le cache");
 			return res.json(cachedData);
 		}
 
-		console.log("⏳ Récupération des flux RSS en ligne...");
+		console.log("⏳ Récupération des flux RSS...");
+
 		const results = [];
 
 		for (const url of flux) {
-			const feed = await parser.parseURL(url);
-			results.push({
-				source: url,
-				title: feed.title,
-				items: feed.items.slice(0, 6), // On limite à 6 articles
-			});
+			try {
+				const feed = await parser.parseURL(url);
+				console.log(`✅ Flux chargé : ${url}`);
+				results.push({
+					source: url,
+					title: feed.title || "Titre non trouvé",
+					items: feed.items?.slice(0, 6) || [],
+				});
+			} catch (err) {
+				console.warn(`⚠️ Erreur flux ${url} : ${err.message}`);
+				// On renvoie toujours un objet même si le flux plante
+				results.push({ source: url, title: "Erreur flux", items: [] });
+			}
 		}
 
-		// Stocke en cache pour 2h
+		// 2️⃣ Mise en cache
 		cache.set("rssData", results);
+		console.log("💾 Données mises en cache");
 
-		console.log("💾 Données RSS mises en cache");
 		res.json(results);
 	} catch (error) {
-		console.error("❌ Erreur lors du parsing RSS:", error);
-		res.status(500).json({ error: "Erreur serveur" });
+		// On capture absolument tout
+		console.error("❌ Erreur inattendue dans /api/rss :", error);
+		res.json([{ source: "erreur", title: "Erreur serveur", items: [] }]);
 	}
 });
 
