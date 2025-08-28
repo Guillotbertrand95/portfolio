@@ -41,6 +41,7 @@ const Veilles = () => {
 									)?.[1]) ||
 								"https://placehold.co/300x200?text=No+Image",
 						};
+
 						// Ajoute chaque article dès qu'il est prêt
 						setFeeds((prev) => [...prev, cleanedItem]);
 					}
