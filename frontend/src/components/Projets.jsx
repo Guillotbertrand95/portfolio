@@ -11,29 +11,12 @@ import devemloperAct from "../assets/developeract.webp";
 
 const projetsData = [
 	{
-		titre: "Projet IA",
-		image: agentIa,
-		lien: "https://exemple.com",
-		description: "Un projet d'intelligence artificielle super cool",
-	},
-	{
 		titre: "React",
 		image: react,
 		lien: "https://kasa-bertrand.netlify.app/",
 		description: "Mon site perso en React",
 	},
-	{
-		titre: "DevOps",
-		image: DevOps,
-		lien: "#",
-		description: "Mon site perso en React",
-	},
-	{
-		titre: "API",
-		image: API,
-		lien: "#",
-		description: "Mon site perso en React",
-	},
+
 	{
 		titre: "Our-Solution",
 		image: ourSolution,
@@ -43,7 +26,25 @@ const projetsData = [
 	{
 		titre: "Développer",
 		image: devemloperAct,
-		lien: "#",
+		lien: "https://tempfront-self.vercel.app/",
+		description: "Mon site perso en React",
+	},
+	{
+		titre: "Projet IA",
+		image: agentIa,
+		lien: "https://github.com/Guillotbertrand95",
+		description: "Un projet d'intelligence artificielle super cool",
+	},
+	{
+		titre: "API",
+		image: API,
+		lien: "https://github.com/Guillotbertrand95",
+		description: "Mon site perso en React",
+	},
+	{
+		titre: "DevOps",
+		image: DevOps,
+		lien: "https://github.com/Guillotbertrand95",
 		description: "Mon site perso en React",
 	},
 ];
