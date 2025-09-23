@@ -4,9 +4,9 @@ export default function BackgroundStatic({ children }) {
 			className="background-mouse"
 			style={{
 				background:
-					"linear-gradient(220deg, #E2E2FF, #D7FFE9, #B8E3FF)",
+					"linear-gradient(220deg,#231942 ,#08415C ,#231942 )",
 				minHeight: "100vh",
-				color: "#F2F8FF",
+				color: "#9D44B5",
 			}}
 		>
 			{children}
